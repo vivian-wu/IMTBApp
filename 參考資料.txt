@@ -1,0 +1,9 @@
+左側選單
+https://dotblogs.com.tw/starhao/2016/10/06/083648
+https://solinariwu.blogspot.tw/2017/02/android-navigation-viewactivity.html
+
+Android 教學
+https://chris930921.gitbooks.io/android-traveling-gitbook/index.html
+
+Git 教學 
+https://zlargon.gitbooks.io/git-tutorial/content/
