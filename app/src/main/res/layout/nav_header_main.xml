@@ -141,11 +141,11 @@
                     android:textSize="14sp"/>
 
                 <Button
-                    android:id="@+id/button3"
+                    android:id="@+id/button6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
-                    android:text="資產負債表"/>
+                    android:text="卡片掃描" />
 
                 <Button
                     android:id="@+id/button4"
@@ -153,6 +153,13 @@
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
                     android:text="損益表"/>
+
+                <Button
+                    android:id="@+id/button3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:text="資產負債表" />
 
                 <Button
                     android:id="@+id/button5"
