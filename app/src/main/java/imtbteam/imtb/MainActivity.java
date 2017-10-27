@@ -1,5 +1,6 @@
 package imtbteam.imtb;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,12 +13,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
 		implements NavigationView.OnNavigationItemSelectedListener {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -26,8 +29,45 @@ public class MainActivity extends AppCompatActivity
 		DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 		ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
 				this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-		drawer.setDrawerListener(toggle);
+		assert drawer != null;
+		drawer.addDrawerListener(toggle);
 		toggle.syncState();
+
+		/////////////////////////////// 按鈕選單////////////////////////////
+
+		/* 首頁 */
+		findViewById(R.id.nav_btn_home).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				/* 畫面切換 */
+				Intent intent = new Intent();
+				intent.setClass(MainActivity.this, MainActivity.class);
+				startActivity(intent);
+
+				/*浮現的小訊息*/
+				Toast.makeText(MainActivity.this, "切換至首頁，成功！", Toast.LENGTH_SHORT).show();
+				onBackPressed();
+
+				finish();
+			}
+		});
+
+		/* 遊戲規則 */
+		findViewById(R.id.nav_btn_home).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent();
+				intent.setClass(MainActivity.this, MainActivity.class);
+				startActivity(intent);
+
+				Toast.makeText(MainActivity.this, "切換至首頁，成功！", Toast.LENGTH_SHORT).show();
+				onBackPressed();
+
+				finish();
+			}
+		});
+
+
 
 	}
 	@Override
@@ -68,8 +108,8 @@ public class MainActivity extends AppCompatActivity
 		// Handle navigation view item clicks here.
 		int id = item.getItemId();
 
-		if (id == R.id.nav_camera) {
-			// Handle the camera action
+		if (id == R.id.nav_btn_home) {
+
 		} else if (id == R.id.nav_gallery) {
 
 		} else if (id == R.id.nav_slideshow) {

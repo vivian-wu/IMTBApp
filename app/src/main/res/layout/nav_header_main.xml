@@ -115,7 +115,7 @@
                 android:orientation="vertical">
 
                 <Button
-                    android:id="@+id/button1"
+                    android:id="@+id/nav_btn_home"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
@@ -124,7 +124,7 @@
 
 
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/nac_btn_rule"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
@@ -136,33 +136,40 @@
                     android:id="@+id/textView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginLeft="20dp"
                     android:text="個人專區"
                     android:textSize="14sp"/>
 
                 <Button
-                    android:id="@+id/button6"
+                    android:id="@+id/nav_btn_record"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:text="紀錄收支" />
+
+                <Button
+                    android:id="@+id/nav_btn_scanner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
                     android:text="卡片掃描" />
 
                 <Button
-                    android:id="@+id/button4"
+                    android:id="@+id/nav_btn_IS"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
                     android:text="損益表"/>
 
                 <Button
-                    android:id="@+id/button3"
+                    android:id="@+id/nav_btn_BS"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
                     android:text="資產負債表" />
 
                 <Button
-                    android:id="@+id/button5"
+                    android:id="@+id/nav_btn_CF"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
@@ -175,7 +182,7 @@
                 android:text="關於"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/button"
+                android:id="@+id/nav_btn_about"
                 android:background="@android:color/transparent" />
 
         </LinearLayout>

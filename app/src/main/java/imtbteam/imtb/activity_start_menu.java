@@ -40,6 +40,7 @@ public class activity_start_menu extends AppCompatActivity {
 		);
 	}
 
+	// 測試用 MSGbox
 	private void ShowMsgDialog(String Msg)
 	{
 		AlertDialog.Builder MyAlertDialog = new AlertDialog.Builder(this);
