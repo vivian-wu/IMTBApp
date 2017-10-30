@@ -124,7 +124,7 @@
 
 
                 <Button
-                    android:id="@+id/nac_btn_rule"
+                    android:id="@+id/nav_btn_rule"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"

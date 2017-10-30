@@ -1,6 +1,7 @@
 左側選單
 https://dotblogs.com.tw/starhao/2016/10/06/083648
 https://solinariwu.blogspot.tw/2017/02/android-navigation-viewactivity.html
+https://1010code.blogspot.tw/2016/12/navigation-drawer-partiii.html
 
 Android 教學
 https://chris930921.gitbooks.io/android-traveling-gitbook/index.html

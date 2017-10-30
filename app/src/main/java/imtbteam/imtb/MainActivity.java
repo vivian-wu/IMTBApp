@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity
 		});
 
 		/* 遊戲規則 */
-		findViewById(R.id.nav_btn_home).setOnClickListener(new View.OnClickListener() {
+		findViewById(R.id.nav_btn_rule).setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent();
@@ -61,6 +61,21 @@ public class MainActivity extends AppCompatActivity
 				startActivity(intent);
 
 				Toast.makeText(MainActivity.this, "切換至首頁，成功！", Toast.LENGTH_SHORT).show();
+				onBackPressed();
+
+				finish();
+			}
+		});
+
+		/* 掃描卡片 */
+		findViewById(R.id.nav_btn_scanner).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent();
+				intent.setClass(MainActivity.this, ScannerActivity.class);
+				startActivity(intent);
+
+				Toast.makeText(MainActivity.this, "切換至掃描卡片，成功！", Toast.LENGTH_SHORT).show();
 				onBackPressed();
 
 				finish();
