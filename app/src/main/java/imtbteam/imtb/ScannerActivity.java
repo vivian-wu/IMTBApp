@@ -27,7 +27,7 @@ public class ScannerActivity extends AppCompatActivity {
 		this.btn_scan.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				new IntentIntegrator(MainActivity.this).initiateScan();
+				new IntentIntegrator( ScannerActivity.this).initiateScan();
 			}
 		});
 	}
