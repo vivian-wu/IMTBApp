@@ -1,6 +1,7 @@
 package imtbteam.imtb;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -39,6 +40,12 @@ public class ScannerActivity extends AppCompatActivity {
 			String scanContent = result.getContents();
 			String scanFormat = result.getFormatName();
 			txt_url.setText(scanFormat+" \n"+scanContent);
+
+			// 開啟URL
+			Uri uri = Uri.parse(scanContent);
+			intent = new Intent(Intent.ACTION_VIEW, uri);
+			startActivity(intent);
+
 		}else{
 			Toast.makeText(getApplicationContext(), "nothing", Toast.LENGTH_LONG).show();
 		}
