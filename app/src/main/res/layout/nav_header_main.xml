@@ -179,11 +179,11 @@
 
 
             <Button
-                android:text="關於"
+                android:id="@+id/nav_btn_about"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/nav_btn_about"
-                android:background="@android:color/transparent" />
+                android:background="@android:color/transparent"
+                android:text="關於" />
 
         </LinearLayout>
 
