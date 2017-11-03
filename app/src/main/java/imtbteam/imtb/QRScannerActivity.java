@@ -1,6 +1,7 @@
 package imtbteam.imtb;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,16 +14,25 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
+
+public class QRScannerActivity extends AppCompatActivity
 		implements NavigationView.OnNavigationItemSelectedListener {
+
+	private Button btn_scan;
+	private TextView txt_url;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.activity_qrscanner);
+
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 		setSupportActionBar(toolbar);
 
@@ -33,58 +43,36 @@ public class MainActivity extends AppCompatActivity
 		drawer.addDrawerListener(toggle);
 		toggle.syncState();
 
-		/////////////////////////////// 按鈕選單////////////////////////////
+		this.btn_scan = (Button)findViewById(R.id.btn_scan);
+		this.txt_url = (TextView) findViewById(R.id.txt_url);
 
-		/* 首頁 */
-		findViewById(R.id.nav_btn_home).setOnClickListener(new View.OnClickListener() {
+		this.btn_scan.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				/* 畫面切換 */
-				Intent intent = new Intent();
-				intent.setClass(MainActivity.this, MainActivity.class);
-				startActivity(intent);
-
-				/*浮現的小訊息*/
-				Toast.makeText(MainActivity.this, "切換至首頁，成功！", Toast.LENGTH_SHORT).show();
-				onBackPressed();
-
-				finish();
+				new IntentIntegrator( QRScannerActivity.this).initiateScan();
 			}
 		});
-
-		/* 遊戲規則 */
-		findViewById(R.id.nav_btn_rule).setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent();
-				intent.setClass(MainActivity.this, GameRuleActivity.class);
-				startActivity(intent);
-
-				Toast.makeText(MainActivity.this, "切換至遊戲規則，成功！", Toast.LENGTH_SHORT).show();
-				onBackPressed();
-
-				finish();
-			}
-		});
-
-		/* 掃描卡片 */
-		findViewById(R.id.nav_btn_scanner).setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent();
-				intent.setClass(MainActivity.this, QRScannerActivity.class);
-				startActivity(intent);
-
-				Toast.makeText(MainActivity.this, "切換至掃描卡片，成功！", Toast.LENGTH_SHORT).show();
-				onBackPressed();
-
-				finish();
-			}
-		});
-
-
 
 	}
+
+	public void onActivityResult(int requestCode, int resultCode, Intent intent){
+		IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
+		if(result!=null){
+			String scanContent = result.getContents();
+			String scanFormat = result.getFormatName();
+			txt_url.setText(scanFormat+" \n"+scanContent);
+
+			// 開啟URL
+			Uri uri = Uri.parse(scanContent);
+			intent = new Intent(Intent.ACTION_VIEW, uri);
+			startActivity(intent);
+
+		}else{
+			Toast.makeText(getApplicationContext(), "nothing", Toast.LENGTH_LONG).show();
+		}
+
+	}
+
 	@Override
 	public void onBackPressed() {
 		DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -98,7 +86,7 @@ public class MainActivity extends AppCompatActivity
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
+		getMenuInflater().inflate(R.menu.qrscanner, menu);
 		return true;
 	}
 
@@ -123,8 +111,8 @@ public class MainActivity extends AppCompatActivity
 		// Handle navigation view item clicks here.
 		int id = item.getItemId();
 
-		if (id == R.id.nav_btn_home) {
-
+		if (id == R.id.nav_camera) {
+			// Handle the camera action
 		} else if (id == R.id.nav_gallery) {
 
 		} else if (id == R.id.nav_slideshow) {
