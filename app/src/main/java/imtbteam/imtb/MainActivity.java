@@ -67,6 +67,21 @@ public class MainActivity extends AppCompatActivity
 			}
 		});
 
+		/*紀錄收支*/
+		findViewById(R.id.nav_btn_record).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent();
+				intent.setClass(MainActivity.this, FinanceActivity.class);
+				startActivity(intent);
+
+				Toast.makeText(MainActivity.this, "切換至紀錄收支，成功！", Toast.LENGTH_SHORT).show();
+				onBackPressed();
+
+				finish();
+			}
+		});
+
 		/* 掃描卡片 */
 		findViewById(R.id.nav_btn_scanner).setOnClickListener(new View.OnClickListener() {
 			@Override

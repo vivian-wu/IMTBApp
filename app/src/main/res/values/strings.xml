@@ -5,5 +5,6 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="title_activity_main">我是大老闆</string>
     <string name="action_settings">設定</string>
-    <string name="title_activity_qrscanner">QRScannerActivity</string>
+    <string name="title_activity_qrscanner">我是大老闆</string>
+    <string name="title_activity_finance">我是大老闆</string>
 </resources>
