@@ -57,18 +57,14 @@ public class QRScannerActivity extends AppCompatActivity
 
 	public void onActivityResult(int requestCode, int resultCode, Intent intent){
 		IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
+
 		if(result!=null){
 			String scanContent = result.getContents();
 			String scanFormat = result.getFormatName();
 			txt_url.setText(scanFormat+" \n"+scanContent);
-
-			// 開啟URL
-			Uri uri = Uri.parse(scanContent);
-			intent = new Intent(Intent.ACTION_VIEW, uri);
-			startActivity(intent);
-
-		}else{
-			Toast.makeText(getApplicationContext(), "nothing", Toast.LENGTH_LONG).show();
+		}
+		else{
+            Toast.makeText(QRScannerActivity.this,"nothing",Toast.LENGTH_SHORT).show();
 		}
 
 	}
