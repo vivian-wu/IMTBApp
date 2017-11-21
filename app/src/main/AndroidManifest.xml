@@ -27,11 +27,12 @@
         <activity
             android:name=".QRScannerActivity"
             android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".FinanceActivity"
             android:label="@string/title_activity_finance"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".AccountingActivity"></activity>
     </application>
 
 </manifest>
