@@ -1,28 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.DrawerLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:openDrawer="start">
-  <!--
-    <LinearLayout
-        android:id="@+id/nav_view"
-        android:orientation="horizontal"
-        android:layout_width="250dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="left">
-
-        <include
-            layout="@layout/nav_header_main"
-            android:layout_width="51dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
-
-    </LinearLayout>-->
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="imtbteam.imtb.game_rule"
+    tools:showIn="@layout/app_bar_game_rule">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -51,12 +35,16 @@
 
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/button1"
                 android:layout_width="114dp"
                 android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
                 android:text="開始/結束" />
 
             <Button
+                android:id="@+id/button2"
                 android:layout_width="117dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
@@ -65,7 +53,7 @@
                 android:text="儲蓄圈" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/button3"
                 android:layout_width="117dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -97,6 +85,4 @@
 
         </LinearLayout>
     </LinearLayout>
-
-
-</android.support.v4.widget.DrawerLayout>
+</android.support.constraint.ConstraintLayout>

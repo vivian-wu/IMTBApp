@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent();
-				intent.setClass(MainActivity.this, GameRuleActivity.class);
+				intent.setClass(MainActivity.this, game_rule.class);
 				startActivity(intent);
 
 				Toast.makeText(MainActivity.this, "切換至遊戲規則，成功！", Toast.LENGTH_SHORT).show();
