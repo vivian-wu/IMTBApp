@@ -16,12 +16,15 @@
         android:orientation="horizontal">
 
         <RadioButton
+            android:id="@+id/rbt_rev"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:checked="true"
             android:text="收入" />
 
         <RadioButton
+            android:id="@+id/rbt_exp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
