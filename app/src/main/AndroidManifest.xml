@@ -23,6 +23,10 @@
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
+<<<<<<< HEAD
+=======
+        <activity android:name=".GameRuleActivity" />
+>>>>>>> Add-DB
         <activity
             android:name=".QRScannerActivity"
             android:label="@string/title_activity_main"
@@ -31,10 +35,14 @@
             android:name=".FinanceActivity"
             android:label="@string/title_activity_finance"
             android:theme="@style/AppTheme.NoActionBar" />
+<<<<<<< HEAD
         <activity
             android:name=".game_rule"
             android:label="@string/title_activity_game_rule"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+=======
+        <activity android:name=".AccountingActivity"></activity>
+>>>>>>> Add-DB
     </application>
 
 </manifest>

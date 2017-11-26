@@ -1,5 +1,9 @@
 package imtbteam.imtb;
 
+<<<<<<< HEAD
+=======
+import android.content.Intent;
+>>>>>>> Add-DB
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -26,12 +30,22 @@ public class FinanceActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+<<<<<<< HEAD
 //        fab.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
 //                Toast.makeText(FinanceActivity.this, "FAB Clicked", Toast.LENGTH_SHORT).show();
 //            }
 //        });
+=======
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(
+                        new Intent(FinanceActivity.this, AccountingActivity.class));
+            }
+        });
+>>>>>>> Add-DB
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
