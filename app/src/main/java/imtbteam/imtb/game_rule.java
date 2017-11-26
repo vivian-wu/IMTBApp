@@ -37,9 +37,9 @@ public class game_rule extends AppCompatActivity
 
 
 
-        button1 = (Button) findViewById(R.id.button1);
-        button2 = (Button) findViewById(R.id.button2);
-        button3= (Button) findViewById(R.id.button3);
+        button1 = (Button) findViewById(R.id.gule_btn_start);
+        button2 = (Button) findViewById(R.id.gule_btn_savings);
+        button3= (Button) findViewById(R.id.gule_btn_entrepreneurship);
         textView7 = (TextView) findViewById(R.id.textView7);
         button1.setOnClickListener(new View.OnClickListener()
         {

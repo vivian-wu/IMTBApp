@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -35,7 +36,7 @@
 
 
             <Button
-                android:id="@+id/button1"
+                android:id="@+id/gule_btn_start"
                 android:layout_width="114dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -44,7 +45,7 @@
                 android:text="開始/結束" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/gule_btn_savings"
                 android:layout_width="117dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
@@ -53,7 +54,7 @@
                 android:text="儲蓄圈" />
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/gule_btn_entrepreneurship"
                 android:layout_width="117dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"

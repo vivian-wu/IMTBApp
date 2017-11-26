@@ -7,8 +7,6 @@
     <string name="action_settings">設定</string>
     <string name="title_activity_qrscanner">我是大老闆</string>
     <string name="title_activity_finance">我是大老闆</string>
-<<<<<<< HEAD
-    <string name="title_activity_game_rule">game_rule</string>
-=======
->>>>>>> Add-DB
+    <string name="title_activity_game_rule">我是大老闆</string>
+
 </resources>
