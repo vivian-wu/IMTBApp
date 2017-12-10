@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="@drawable/activity_start_menu"
-              android:elevation="1dp"
-              android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/st_bg"
+    android:elevation="1dp"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,7 +17,7 @@
         <Space
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="2.25"/>
+            android:layout_weight="2.25" />
 
         <Button
             android:id="@+id/button7"
@@ -26,7 +26,7 @@
             android:text="開始遊戲"
             android:visibility="visible"
             tools:layout_editor_absoluteX="52dp"
-            tools:layout_editor_absoluteY="251dp"/>
+            tools:layout_editor_absoluteY="251dp" />
 
         <Button
             android:id="@+id/button8"
@@ -36,12 +36,12 @@
             android:text="遊戲紀錄"
             android:visibility="visible"
             tools:layout_editor_absoluteX="52dp"
-            tools:layout_editor_absoluteY="342dp"/>
+            tools:layout_editor_absoluteY="342dp" />
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1.05"/>
+            android:layout_weight="1.05" />
     </LinearLayout>
 
 </LinearLayout>
