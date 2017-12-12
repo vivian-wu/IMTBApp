@@ -77,7 +77,7 @@
                 android:id="@+id/textView7"
                 android:layout_width="380dp"
                 android:layout_height="330dp"
-                android:maxLines="7"
+                android:maxLines="30"
                 android:scrollbars="vertical"
                 android:singleLine="false"
                 android:text="遊戲規則說明：\n請點選上方按鈕，切換遊戲規則"

@@ -1,10 +1,8 @@
 package imtbteam.imtb;
-import android.content.Intent;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -13,10 +11,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
+import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 public class FinanceActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+     RadioGroup radioGroup1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +28,9 @@ public class FinanceActivity extends AppCompatActivity
         setContentView(R.layout.activity_finance);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        RadioButton rbt_rev = (RadioButton) findViewById(R.id.rbt_rev);
+        RadioButton rbt_exp = (RadioButton) findViewById(R.id.rbt_exp);
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 
@@ -49,6 +55,8 @@ public class FinanceActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
     }
+
+
 
     @Override
     public void onBackPressed() {
