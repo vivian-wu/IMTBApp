@@ -26,6 +26,8 @@ public class MyDBHelper extends SQLiteOpenHelper {
     /*---------------  資料表 - 職業 END  ---------------*/
 
 
+
+    // 建構子
     public MyDBHelper(Context context){
         super(context, DBName, null, DBVersion);
     }
@@ -34,6 +36,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
 
         super(context, name, factory, version);
     }
+
 
     // 需要資料庫的元件呼叫這個方法，這個方法在一般的應用都不需要修改
     public static SQLiteDatabase getDatabase(Context context) {

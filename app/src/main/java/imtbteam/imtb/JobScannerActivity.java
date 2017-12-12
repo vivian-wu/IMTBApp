@@ -51,10 +51,30 @@ public class JobScannerActivity extends AppCompatActivity {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
         if(result!=null){
 
-            dbHelper = new MyDBHelper(this);
-            db = dbHelper.getReadableDatabase();
+            /* ------------------------------資料庫語法 ----------------------------*/
 
-            String scanContent = result.getContents();
+            dbHelper = new MyDBHelper(this);
+            db = dbHelper.getReadableDatabase(); // 打開資料庫
+
+            String scanContent = result.getContents(); // QRcode
+
+            String sql="SELECT * FROM JOB WHERE JobNo = '"+scanContent+"'";
+            Cursor c= db.rawQuery(sql,null);
+
+            String str ="";
+
+            c.moveToFirst();// 移到第 1 筆資料
+            do{             // 逐筆讀出資料
+                str+="您的職業是:"+c.getString(1)+"\n";
+                str+="每月薪水:"+c.getString(2)+"\n";
+                str+="每月成本:"+c.getString(3)+"\n";
+                str+="月現金流:"+c.getString(4)+"\n";;
+            } while(c.moveToNext());    // 有一下筆就繼續迴圈
+
+            txt_job.setText(scanContent+"\n"+str);
+            db.close();        // 關閉資料庫
+
+            /* ------------------------------資料庫語法 ----------------------------*/
 
             /*
             Cursor c = db.rawQuery("SELECT * FROM JOB", null);// 查詢JOB資料表中的所有資料
@@ -78,23 +98,6 @@ public class JobScannerActivity extends AppCompatActivity {
 
                 txt_job.setText(str);
             }*/
-
-            String sql="SELECT * FROM JOB WHERE JobNo = '"+scanContent+"'";
-            Cursor c= db.rawQuery(sql,null);
-
-            String str ="";
-
-            c.moveToFirst();    // 移到第 1 筆資料
-            do{        // 逐筆讀出資料
-                str+="您的職業是:"+c.getString(1)+"\n";
-                str+="每月薪水:"+c.getString(2)+"\n";
-                str+="每月成本:"+c.getString(3)+"\n";
-                str+="月現金流:"+c.getString(4)+"\n";
-                str+="-----\n";
-            } while(c.moveToNext());    // 有一下筆就繼續迴圈
-
-            txt_job.setText(scanContent+"\n"+str);
-            db.close();        // 關閉資料庫
 
 
 
