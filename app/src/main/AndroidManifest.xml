@@ -23,10 +23,7 @@
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
-
-
         <activity android:name=".GameRuleActivity" />
-
         <activity
             android:name=".QRScannerActivity"
             android:label="@string/title_activity_main"
@@ -35,14 +32,12 @@
             android:name=".FinanceActivity"
             android:label="@string/title_activity_finance"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
-            android:name="game_rule"
+            android:name=".game_rule"
             android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-
-        <activity android:name=".AccountingActivity"></activity>
-
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".AccountingActivity" />
+        <activity android:name=".JobScannerActivity"></activity>
     </application>
 
 </manifest>
