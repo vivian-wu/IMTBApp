@@ -23,7 +23,6 @@
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".GameRuleActivity" />
         <activity
             android:name=".QRScannerActivity"
             android:label="@string/title_activity_main"

@@ -65,10 +65,10 @@ public class JobScannerActivity extends AppCompatActivity {
 
             c.moveToFirst();// 移到第 1 筆資料
             do{             // 逐筆讀出資料
-                str+="您的職業是:"+c.getString(1)+"\n";
-                str+="每月薪水:"+c.getString(2)+"\n";
-                str+="每月成本:"+c.getString(3)+"\n";
-                str+="月現金流:"+c.getString(4)+"\n";;
+                str+="您的職業是："+c.getString(1)+"\n";
+                str+="每月薪水："+c.getString(2)+"\n";
+                str+="每月成本："+c.getString(3)+"\n";
+                str+="月現金流："+c.getString(4)+"\n";;
             } while(c.moveToNext());    // 有一下筆就繼續迴圈
 
             txt_job.setText(scanContent+"\n"+str);
