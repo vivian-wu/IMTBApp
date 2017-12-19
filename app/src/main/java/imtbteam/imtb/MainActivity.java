@@ -96,8 +96,35 @@ public class MainActivity extends AppCompatActivity
 
 			}
 		});
+		/* 資產現況 */
+		findViewById(R.id.nav_btn_CF).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent();
+				intent.setClass(MainActivity.this, assets_record.class);
+				startActivity(intent);
+
+				Toast.makeText(MainActivity.this, "切換至資產現況，成功！", Toast.LENGTH_SHORT).show();
+				onBackPressed();
 
 
+			}
+		});
+
+		/* 關於 */
+		findViewById(R.id.nav_btn_about).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent();
+				intent.setClass(MainActivity.this, assets_record.class);
+				startActivity(intent);
+
+				Toast.makeText(MainActivity.this, "切換至關於，成功！", Toast.LENGTH_SHORT).show();
+				onBackPressed();
+
+
+			}
+		});
 
 	}
 	@Override

@@ -8,5 +8,7 @@
     <string name="title_activity_qrscanner">我是大老闆</string>
     <string name="title_activity_finance">我是大老闆</string>
     <string name="title_activity_game_rule">我是大老闆</string>
+    <string name="title_activity_assets_record">我是大老闆</string>
+    <string name="title_activity_about_us">我是大老闆</string>
 
 </resources>
