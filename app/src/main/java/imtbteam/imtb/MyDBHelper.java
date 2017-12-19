@@ -25,6 +25,18 @@ public class MyDBHelper extends SQLiteOpenHelper {
 
     /*---------------  資料表 - 職業 END  ---------------*/
 
+    /*---------------  資料表 - 玩家資訊 START ---------------*/
+    private static final String TABLE_PLAYER = "PLAYER";
+
+    // 編號表格欄位名稱，固定不變
+    public static final String PlayerID = "PlayerID ";
+
+    // 其它表格欄位名稱
+    public static final String PlayerName = "PlayerName";
+        //public static final String JobNo = "JobNo";
+    public static final String Status = "Status";
+
+    /*---------------  資料表 - 職業 END  ---------------*/
 
 
     // 建構子
@@ -66,6 +78,12 @@ public class MyDBHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO JOB (JobNo, Job, Salary, Cost, MonthCashFlow) values( 'J06', '律師', 58500, 49725, 8775)");
         db.execSQL("INSERT INTO JOB (JobNo, Job, Salary, Cost, MonthCashFlow) values( 'J07', '秘書', 47200, 40120, 7080)");
         db.execSQL("INSERT INTO JOB (JobNo, Job, Salary, Cost, MonthCashFlow) values( 'J08', '卡車司機', 34800, 29580, 5220)");
+
+        db.execSQL("CREATE TABLE " + TABLE_PLAYER + " (" +
+                PlayerID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                PlayerName + " TEXT NOT NULL, " +
+                JobNo + " TEXT NOT NULL, " +
+                Status + " INTEGER NOT NULL)");
     }
 
 
