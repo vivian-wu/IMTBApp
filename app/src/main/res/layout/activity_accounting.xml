@@ -9,10 +9,15 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin">
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
+
     <RadioGroup
         android:id="@+id/radioGroup1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <RadioButton
@@ -39,33 +44,51 @@
         android:layout_width="match_parent"
         android:layout_height="25dp" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="金額"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <EditText
-        android:id="@+id/ed_amount"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:color="#c72121"
-        android:ems="10"
-        android:hint="輸入金額"
-        android:inputType="number"
-        android:selectAllOnFocus="false"
-        android:singleLine="false"
-        android:visibility="visible" />
+        android:layout_height="41dp"
+        android:orientation="horizontal">
 
-    <Space
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="83dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="8dp"
+            android:layout_weight="1"
+            android:text="金額："
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <EditText
+            android:id="@+id/ed_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_edittext"
+            android:ems="10"
+            android:inputType="number"
+            android:paddingLeft="8dp"
+            android:selectAllOnFocus="false"
+            android:singleLine="false"
+            android:visibility="visible" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="25dp" />
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="btn_add"
-        android:text="新增" />
+        <Space
+            android:layout_width="232dp"
+            android:layout_height="24dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="btn_add"
+            android:text="新增" />
+    </LinearLayout>
+
 </LinearLayout>

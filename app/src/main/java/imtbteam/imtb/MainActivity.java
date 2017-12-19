@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity
 				Toast.makeText(MainActivity.this, "切換至遊戲規則，成功！", Toast.LENGTH_SHORT).show();
 				onBackPressed();
 
-				finish();
+
 			}
 		});
 
@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity
 				Toast.makeText(MainActivity.this, "切換至紀錄收支，成功！", Toast.LENGTH_SHORT).show();
 				onBackPressed();
 
-				finish();
+
 			}
 		});
 
@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity
 				Toast.makeText(MainActivity.this, "切換至掃描卡片，成功！", Toast.LENGTH_SHORT).show();
 				onBackPressed();
 
-				finish();
+
 			}
 		});
 

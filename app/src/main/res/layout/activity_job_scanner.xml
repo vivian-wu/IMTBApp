@@ -5,7 +5,13 @@
     android:layout_height="match_parent"
     android:layout_column="0"
     android:layout_columnSpan="2"
+    android:layout_marginBottom="0dp"
+    android:background="@color/robin_egg_blue"
     android:columnCount="2"
+    android:paddingBottom="20dp"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:paddingTop="30dp"
     android:rowCount="5"
     tools:context="imtbteam.imtb.JobScannerActivity">
 
@@ -23,7 +29,8 @@
         android:layout_column="0"
         android:layout_row="1"
         android:gravity="center_vertical|center"
-        android:text="名字：" />
+        android:text="名字："
+        android:textSize="16sp" />
 
     <EditText
         android:id="@+id/job_input_name"
@@ -33,9 +40,8 @@
         android:layout_marginLeft="3dp"
         android:layout_row="1"
         android:background="@drawable/bg_edittext"
-        android:hint="輸入名字"
         android:inputType="textPersonName"
-        android:padding="5dip"
+        android:paddingLeft="10dp"
         android:singleLine="true"
         android:textColorHint="#AAAAAA"
         android:textSize="15dip" />
@@ -47,7 +53,8 @@
         android:layout_column="0"
         android:layout_row="2"
         android:gravity="center"
-        android:text="職業：" />
+        android:text="職業："
+        android:textSize="16sp" />
 
     <Button
         android:id="@+id/job_btn_scan"
@@ -63,9 +70,11 @@
         android:layout_column="0"
         android:layout_columnSpan="2"
         android:layout_row="3"
-        android:gravity="left|center_vertical"
-        android:paddingLeft="80dp"
+        android:gravity="center_vertical"
         android:paddingTop="20dp"
+        android:text="尚未掃描職業卡片"
+        android:textAlignment="center"
+        android:textColor="@color/black_cat"
         android:textSize="16sp" />
 
     <Button
@@ -74,10 +83,12 @@
         android:layout_height="wrap_content"
         android:layout_column="0"
         android:layout_columnSpan="2"
+        android:layout_marginBottom="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="250dp"
+        android:layout_marginTop="160dp"
         android:layout_row="4"
+        android:padding="20dp"
         android:text="確定" />
 
 </GridLayout>

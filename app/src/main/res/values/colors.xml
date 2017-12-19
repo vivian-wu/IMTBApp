@@ -157,7 +157,7 @@
     <color name="plum_pie">#7D0541</color>
     <color name="plum_velvet">#7D0552</color>
     <color name="dark_orchid">#7D1B7E</color>
-    <color name="tron_blue">#7DFDFE</color>
+    <color name="tron_blue">#7dfdfe</color>
     <color name="blood_red">#7E3517</color>
     <color name="velvet_maroon">#7E354D</color>
     <color name="sangria">#7E3817</color>
@@ -206,7 +206,7 @@
     <color name="darkseagreen">#8FBC8F</color>
     <color name="lightgreen">#90EE90</color>
     <color name="crocus_purple">#9172EC</color>
-    <color name="cyan_opaque">#92C7C7</color>
+    <color name="cyan_opaque">#92c7c7</color>
     <color name="mediumpurple">#9370DB</color>
     <color name="light_aquamarine">#93FFE8</color>
     <color name="darkviolet">#9400D3</color>
@@ -259,7 +259,7 @@
     <color name="metallic_silver">#BCC6CC</color>
     <color name="slime_green">#BCE954</color>
     <color name="darkkhaki">#BDB76B</color>
-    <color name="robin_egg_blue">#BDEDFF</color>
+    <color name="robin_egg_blue">#bdedff</color>
     <color name="mahogany">#C04000</color>
     <color name="silver">#C0C0C0</color>
     <color name="chilli_pepper">#C11B17</color>
