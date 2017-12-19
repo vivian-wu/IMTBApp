@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent();
-				intent.setClass(MainActivity.this, assets_record.class);
+				intent.setClass(MainActivity.this, about_us.class);
 				startActivity(intent);
 
 				Toast.makeText(MainActivity.this, "切換至關於，成功！", Toast.LENGTH_SHORT).show();

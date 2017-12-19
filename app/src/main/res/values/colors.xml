@@ -86,7 +86,7 @@
     <color name="spring_green">#4AA02C</color>
     <color name="indigo">#4B0082</color>
     <color name="black_cow">#4C4646</color>
-    <color name="beetle_green">#4C787E</color>
+    <color name="beetle_green">#4c787e</color>
     <color name="green_apple">#4CC417</color>
     <color name="kelly_green">#4CC552</color>
     <color name="purple_haze">#4E387E</color>
@@ -314,7 +314,7 @@
     <color name="crimson">#DC143C</color>
     <color name="grapefruit">#DC381F</color>
     <color name="gainsboro">#DCDCDC</color>
-    <color name="burlywood">#DEB887</color>
+    <color name="burlywood">#deb887</color>
     <color name="mauve">#E0B0FF</color>
     <color name="lightcyan">#E0FFFF</color>
     <color name="dark_salmon">#E18B6B</color>
@@ -439,5 +439,5 @@
     <color name="cream">#FFFFCC</color>
     <color name="lightyellow">#FFFFE0</color>
     <color name="ivory">#FFFFF0</color>
-    <color name="white">#FFFFFF</color>
+    <color name="white">#ffffff</color>
 </resources>
