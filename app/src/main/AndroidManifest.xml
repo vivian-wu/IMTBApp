@@ -45,7 +45,8 @@
         <activity
             android:name=".about_us"
             android:label="@string/title_activity_about_us"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".temp"></activity>
     </application>
 
 </manifest>
