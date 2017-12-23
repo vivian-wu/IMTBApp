@@ -33,7 +33,7 @@ public class JobScannerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         dbHelper = new MyDBHelper(this);
-        db = dbHelper.getReadableDatabase(); // 打開資料庫
+        db = dbHelper.getWritableDatabase(); // 打開資料庫
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_job_scanner);
@@ -61,16 +61,58 @@ public class JobScannerActivity extends AppCompatActivity {
 
                String sql = "INSERT INTO PLAYER (PlayerName, JobNo, Status) values('" + txt_name.getText().toString() + "', '"+ scan_JobNo +"', 1)";
 
-                db.execSQL(sql);
+               db.execSQL(sql);
 
-                //db.execSQL("INSERT INTO PLAYER (PlayerID, PlayerName, JobNo, Status) values('P01', '測試測試', 'J01', 1)");
+               /*抓出最後一筆玩家ID*/
+
+               String id = "";
+
+               Cursor cursorid = db.rawQuery("Select PlayerID from PLAYER",null);
+
+               do {
+                   cursorid.moveToLast();
+                    id = cursorid.getString(0);
+                   Log.d("playerID:", id );
+               }while(cursorid.moveToNext());
+
+               cursorid.close();
+
+               /*抓出他的職業資料*/
+
+               String idsalary ;
+               String idcost;
+
+               String query = "Select Salary , Cost from JOB where JobNo=?";
+               Cursor cursorinfo = db.rawQuery( query , new String[]{scan_JobNo});
+
+                do {
+                    cursorinfo.moveToFirst();
+                    idsalary = cursorinfo.getString(0);
+                    idcost = cursorinfo.getString(1);
+                    Log.d("salary:", idsalary+", "+ idcost);
+
+                }while(cursorinfo.moveToNext());
+
+                cursorinfo.close();
+
+
+                Integer playerId  = Integer.parseInt(id);
+                Integer playerSalary = Integer.parseInt(idsalary);
+                Integer playerCost = Integer.parseInt(idcost);
+                Integer playerMCF =  playerSalary - playerCost;
+
+                //txt_job.setText(playerId+"\n"+playerSalary+"\n"+playerCost+"\n"+playerMCF);
+
+                sql = "INSERT INTO SALARYRECORD (PlayerID, Salary, Cost, MonthCashFlow) values("+ playerId + ", "+ playerSalary +", "+ playerCost+", "+playerMCF+")";
+                db.execSQL(sql);
 
                 Toast.makeText(JobScannerActivity.this, "新增資料成功！", Toast.LENGTH_SHORT).show();
 
 
                 /* ------------------------------測試 Start----------------------------*/
                 /*
-                Cursor c = db.rawQuery("SELECT * FROM PLAYER", null);
+
+                Cursor c = db.rawQuery("SELECT * FROM SALARYRECORD", null);
                 if (c.getCount()==0){
                     txt_job.setText("NO DATA");
                 }
@@ -81,10 +123,11 @@ public class JobScannerActivity extends AppCompatActivity {
 
                     c.moveToFirst();    // 移到第 1 筆資料
                     do{        // 逐筆讀出資料
-                        str+="PlayerID:"+c.getString(0)+"\n";
-                        str+="PlayerName:"+c.getString(1)+"\n";
-                        str+="JobNo:"+c.getString(2)+"\n";
-                        str+="Status:"+c.getString(3)+"\n";
+                        str+= c.getString(0)+"\n";
+                        str+= c.getString(1)+"\n";
+                        str+= c.getString(2)+"\n";
+                        str+= c.getString(3)+"\n";
+                        str+= c.getString(4)+"\n";
                         str+="-----\n";
                     } while(c.moveToNext());    // 有一下筆就繼續迴圈
 
