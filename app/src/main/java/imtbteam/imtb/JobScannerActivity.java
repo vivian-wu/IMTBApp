@@ -58,20 +58,22 @@ public class JobScannerActivity extends AppCompatActivity {
             public void onClick(View v) {
 
             if (txt_name.getText().toString().length() != 0 && scan_JobNo != null ){
-               //String sql = "INSERT INTO PLAYER (PlayerID ,PlayerName, JobNo, Status) values('P02', '" + txt_name.getText().toString() + "', '"+ scan_JobNo +"', 1,)";
+
                String sql = "INSERT INTO PLAYER (PlayerName, JobNo, Status) values('" + txt_name.getText().toString() + "', '"+ scan_JobNo +"', 1)";
+
                 db.execSQL(sql);
 
                 //db.execSQL("INSERT INTO PLAYER (PlayerID, PlayerName, JobNo, Status) values('P01', '測試測試', 'J01', 1)");
 
                 Toast.makeText(JobScannerActivity.this, "新增資料成功！", Toast.LENGTH_SHORT).show();
 
+
+                /* ------------------------------測試 Start----------------------------*/
+                /*
                 Cursor c = db.rawQuery("SELECT * FROM PLAYER", null);
                 if (c.getCount()==0){
                     txt_job.setText("NO DATA");
                 }
-
-                /* ------------------------------測試 Start----------------------------*/
 
                 if (c.getCount()>0){    // 若有資料
                     String str="總共有 "+c.getCount()+"筆資料\n";
@@ -88,11 +90,15 @@ public class JobScannerActivity extends AppCompatActivity {
 
                     txt_job.setText(str);
                 }
-
+                */
                 /* ------------------------------測試 End----------------------------*/
 
-
                 db.close();        // 關閉資料庫
+
+                Intent intent = new Intent();
+                intent.setClass(JobScannerActivity.this, MainActivity.class);
+                startActivity(intent);
+
             }
             else {
 

@@ -36,7 +36,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
         //public static final String JobNo = "JobNo";
     public static final String Status = "Status";
 
-    /*---------------  資料表 - 職業 END  ---------------*/
+    /*---------------  資料表 - 玩家資訊 END  ---------------*/
 
 
     // 建構子

@@ -33,7 +33,7 @@ public class activity_start_menu extends AppCompatActivity {
 		Record.setOnClickListener(new View.OnClickListener() {
 		@Override
 		public void onClick(View v) {
-		ShowMsgDialog("test2");
+		ShowMsgDialog("遊戲紀錄啦");
 
 									}
 								}
@@ -44,7 +44,7 @@ public class activity_start_menu extends AppCompatActivity {
 	private void ShowMsgDialog(String Msg)
 	{
 		AlertDialog.Builder MyAlertDialog = new AlertDialog.Builder(this);
-		MyAlertDialog.setTitle("標題");
+		MyAlertDialog.setTitle("哦，這是！");
 		MyAlertDialog.setMessage(Msg);
 		DialogInterface.OnClickListener OkClick = new DialogInterface.OnClickListener()
 		{
