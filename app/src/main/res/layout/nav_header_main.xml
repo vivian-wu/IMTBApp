@@ -136,18 +136,19 @@
                     android:textSize="14sp" />
 
                 <Button
-                    android:id="@+id/nav_btn_record"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
-                    android:text="紀錄收支" />
-
-                <Button
                     android:id="@+id/nav_btn_scanner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
                     android:text="卡片掃描" />
+
+                <Button
+                    android:id="@+id/nav_btn_record"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:text="收支紀錄" />
+
 
                 <!--<Button-->
                     <!--android:id="@+id/nav_btn_IS"-->
@@ -164,11 +165,19 @@
                     <!--android:text="資產負債表" />-->
 
                 <Button
-                    android:id="@+id/nav_btn_CF"
+                    android:id="@+id/nav_btn_asset"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
                     android:text="資產現況" />
+
+                <Button
+                    android:id="@+id/nav_btn_invest"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:text="股票投資" />
+
 
             </LinearLayout>
 
