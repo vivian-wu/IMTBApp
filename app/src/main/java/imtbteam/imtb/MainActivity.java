@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity
 			}
 		});
 
-		/*紀錄收支*/
+		/*收支紀錄*/
 		findViewById(R.id.nav_btn_record).setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity
 			}
 		});
 		/* 資產現況 */
-		findViewById(R.id.nav_btn_CF).setOnClickListener(new View.OnClickListener() {
+		findViewById(R.id.nav_btn_asset).setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent();
@@ -168,15 +168,15 @@ public class MainActivity extends AppCompatActivity
 
 		if (id == R.id.nav_btn_home) {
 
-		} else if (id == R.id.nav_gallery) {
+		} else if (id == R.id.nav_btn_rule) {
 
-		} else if (id == R.id.nav_slideshow) {
+		} else if (id == R.id.nav_btn_record) {
 
-		} else if (id == R.id.nav_manage) {
+		} else if (id == R.id.nav_btn_scanner) {
 
-		} else if (id == R.id.nav_share) {
+		} else if (id == R.id.nav_btn_asset) {
 
-		} else if (id == R.id.nav_send) {
+		} else if (id == R.id.nav_btn_about) {
 
 		}
 
