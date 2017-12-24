@@ -1,9 +1,11 @@
 package imtbteam.imtb;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -55,17 +57,60 @@ public class QRScannerActivity extends AppCompatActivity
 	}
 
 	public void onActivityResult(int requestCode, int resultCode, Intent intent){
+
+		AlertDialog.Builder MyAlertDialog = new AlertDialog.Builder(this);
 		IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
 
 		if(result!=null){
 			String scanContent = result.getContents();
 			String scanFormat = result.getFormatName();
 			txt_url.setText(scanFormat+" \n"+scanContent);
+
+
+			switch (scanContent)
+			{
+				case "C010":
+				case "C011":
+				case "C012":
+				case "C013":
+				case "C017":
+				case "C018":
+					ShowMsgDialog_card("");
+					break;
+
+			}
+
+			// 將 id 傳至下一 Activity
+			Intent intent2 = new Intent();
+			intent2.setClass(QRScannerActivity.this,AccountingActivity.class);
+			Bundle bundle = new Bundle();
+			bundle.putString("id",scanContent.toString());
+			intent2.putExtras(bundle);
+			startActivity(intent2);
+
+
 		}
 		else{
             Toast.makeText(QRScannerActivity.this,"nothing",Toast.LENGTH_SHORT).show();
 		}
 
+	}
+
+	private void ShowMsgDialog_card(String Msg)
+	{
+		AlertDialog.Builder MyAlertDialog = new AlertDialog.Builder(this);
+		MyAlertDialog.setTitle("哦，這是！");
+		MyAlertDialog.setMessage(Msg);
+
+		MyAlertDialog.setNegativeButton("中間按鈕", new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialogInterface, int i) {
+
+			}
+		});
+
+		AlertDialog dialog = MyAlertDialog.create();
+		dialog.show();
 	}
 
 	@Override

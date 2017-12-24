@@ -31,15 +31,8 @@ public class FinanceActivity extends AppCompatActivity
         RadioButton rbt_rev = (RadioButton) findViewById(R.id.rbt_rev);
         RadioButton rbt_exp = (RadioButton) findViewById(R.id.rbt_exp);
 
-
+/*
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Toast.makeText(FinanceActivity.this, "FAB Clicked", Toast.LENGTH_SHORT).show();
-//            }
-//        });
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,6 +41,7 @@ public class FinanceActivity extends AppCompatActivity
                         new Intent(FinanceActivity.this, AccountingActivity.class));
             }
         });
+*/
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
