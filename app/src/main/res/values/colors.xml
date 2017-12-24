@@ -170,7 +170,7 @@
     <color name="puce">#7F5A58</color>
     <color name="hummingbird_green">#7FE817</color>
     <color name="chartreuse">#7FFF00</color>
-    <color name="aquamarine">#7FFFD4</color>
+    <color name="aquamarine">#7fffd4</color>
     <color name="maroon">#800000</color>
     <color name="purple">#800080</color>
     <color name="firebrick">#800517</color>
@@ -440,4 +440,5 @@
     <color name="lightyellow">#FFFFE0</color>
     <color name="ivory">#FFFFF0</color>
     <color name="white">#ffffff</color>
+    <color name="blue_hosta_alpha">#d777bfc7</color>
 </resources>
