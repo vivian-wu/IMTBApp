@@ -53,7 +53,7 @@ public class activity_start_menu extends AppCompatActivity {
 			//如果不做任何事情 就會直接關閉 對話方塊
 			}
 		};;
-		MyAlertDialog.setPositiveButton("好，我知道了",OkClick );
+		MyAlertDialog.setPositiveButton("好，我知道了！",OkClick );
 		MyAlertDialog.show();
 	}
 
