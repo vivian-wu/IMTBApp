@@ -46,13 +46,14 @@ public class activity_start_menu extends AppCompatActivity {
 		AlertDialog.Builder MyAlertDialog = new AlertDialog.Builder(this);
 		MyAlertDialog.setTitle("哦，這是！");
 		MyAlertDialog.setMessage(Msg);
+		MyAlertDialog.setCancelable(false);
 		DialogInterface.OnClickListener OkClick = new DialogInterface.OnClickListener()
 		{
 			public void onClick(DialogInterface dialog, int which) {
 			//如果不做任何事情 就會直接關閉 對話方塊
 			}
 		};;
-		MyAlertDialog.setNeutralButton("中間按鈕",OkClick );
+		MyAlertDialog.setPositiveButton("好，我知道了",OkClick );
 		MyAlertDialog.show();
 	}
 
