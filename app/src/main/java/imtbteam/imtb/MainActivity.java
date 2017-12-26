@@ -112,20 +112,6 @@ public class MainActivity extends AppCompatActivity
 			}
 		});
 
-		/* 投資理財 */
-		findViewById(R.id.nav_btn_invest).setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent();
-				intent.setClass(MainActivity.this, InvestmentActivity.class);
-				startActivity(intent);
-
-				Toast.makeText(MainActivity.this, "切換至投資理財，成功！", Toast.LENGTH_SHORT).show();
-				onBackPressed();
-
-
-			}
-		});
 
 		/* 關於 */
 		findViewById(R.id.nav_btn_about).setOnClickListener(new View.OnClickListener() {

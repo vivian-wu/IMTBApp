@@ -171,12 +171,7 @@
                     android:background="@android:color/transparent"
                     android:text="資產現況" />
 
-                <Button
-                    android:id="@+id/nav_btn_invest"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
-                    android:text="股票投資" />
+
 
 
             </LinearLayout>
