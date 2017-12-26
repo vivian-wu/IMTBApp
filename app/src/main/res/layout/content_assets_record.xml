@@ -68,7 +68,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="32300 "
+            android:text="0"
             android:textSize="16sp"
             android:visibility="visible" />
 
@@ -94,7 +94,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="27455 "
+            android:text="0"
             android:textSize="16sp"
             android:visibility="visible" />
 
@@ -120,7 +120,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="4845 "
+            android:text="0"
             android:textSize="16sp"
             android:visibility="visible" />
 
