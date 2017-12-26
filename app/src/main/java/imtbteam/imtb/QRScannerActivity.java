@@ -70,6 +70,7 @@ public class QRScannerActivity extends AppCompatActivity
 		IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
 
 		String content;
+		String category;
 		String query ;
 
 		if(result!=null){
@@ -114,22 +115,27 @@ public class QRScannerActivity extends AppCompatActivity
 				int a=Integer.parseInt(temp);
 				if(a<=80){
 					System.out.println("執行機會命運");
-					Cursor cursor = db.rawQuery( "SELECT CardContent FROM CARD WHERE CardNo ='"+scanContent+"'",null);
+					Cursor cursor = db.rawQuery( "SELECT CardCategory, CardContent FROM CARD WHERE CardNo ='"+scanContent+"'",null);
 					cursor.moveToFirst();
-					content = cursor.getString(0);
+					category = cursor.getString(0);
+					content = cursor.getString(1);
 					Log.d("content:", content);
 
-					ShowMsgDialog("哦，這是！",content,"好耶！太棒了！");
+					ShowMsgDialog(category,content,"　確定　");
 					cursor.close();
 				}
 				else if(a>80&&a<=100){
 					System.out.println("投資理財");
-					Cursor cursor = db.rawQuery( "SELECT CardContent FROM CARD_INVESTMENT WHERE CardInvestNo ='"+scanContent+"'",null);
+					Cursor cursor = db.rawQuery( "SELECT CardContent, StockName, StockPrice, Dividend, PriceRange FROM CARD_INVESTMENT WHERE CardInvestNo ='"+scanContent+"'",null);
 					cursor.moveToFirst();
 					content = cursor.getString(0);
-					Log.d("content:", content);
+					String stock = cursor.getString(1);
+					String price = cursor.getString(2);
+					String divi = cursor.getString(3);
+					String range = cursor.getString(4);
+					Log.d("content:",  content);
 
-					ShowMsgDialog("哦，這是！",content,"好耶！太棒了！");
+					ShowMsgDialog_Invest(content, stock, price, divi, range);
 					cursor.close();
 				}
 				else if(a>100&&a<=115){
@@ -139,21 +145,26 @@ public class QRScannerActivity extends AppCompatActivity
 					content = cursor.getString(0);
 					Log.d("content:", content);
 
-					ShowMsgDialog("哦，這是！",content,"好耶！太棒了！");
+					ShowMsgDialog("市場變化",content,"　確定　");
 					cursor.close();
 				}
 				else if(a>115&&a<=145){
 					System.out.println("大小訂單");
-					Cursor cursor = db.rawQuery( "SELECT CardContent FROM CARD_ORDER WHERE CardOrderNo ='"+scanContent+"'",null);
+					Cursor cursor = db.rawQuery( "SELECT CardCategory, CardContent, FixedCost, VariableCost, Quantity, Price FROM CARD_ORDER WHERE CardOrderNo ='"+scanContent+"'",null);
 					cursor.moveToFirst();
-					content = cursor.getString(0);
+					category = cursor.getString(0);
+					content = cursor.getString(1);
+					String fc = cursor.getString(2);
+					String vc = cursor.getString(3);
+					String q = cursor.getString(4);
+					String p = cursor.getString(5);
 					Log.d("content:", content);
 
-					ShowMsgDialog("哦，這是！",content,"好耶！太棒了！");
+					ShowMsgDialog_Order(content,category,fc,vc,q,p);
 					cursor.close();
 				}
 				else{
-					ShowMsgDialog("哦，這是！","錯誤","好耶！太棒了！");
+					ShowMsgDialog("哦，這是！","錯誤","Oh, no！");
 				}
 			}
 
@@ -192,6 +203,59 @@ public class QRScannerActivity extends AppCompatActivity
 		MyAlertDialog.show();
 	}
 
+	private void ShowMsgDialog_Invest(String Msg, String stock, String price, String divi, String range)
+	{
+		AlertDialog.Builder MyAlertDialog = new AlertDialog.Builder(this);
+		MyAlertDialog.setTitle("投資理財");
+		Msg = Msg + "\n\n股票名稱："+stock+"\n目前價格："+price+"\n股票股利："+divi+"\n價格範圍："+range+"\n";
+		MyAlertDialog.setMessage(Msg);
+		MyAlertDialog.setCancelable(false);
+
+		MyAlertDialog.setPositiveButton("　好，我要進行交易！　", new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialogInterface, int i) {
+
+				Intent intent = new Intent();
+				intent.setClass(QRScannerActivity.this, InvestmentActivity.class);
+				startActivity(intent);
+
+			}
+		});
+
+		MyAlertDialog.setNegativeButton("　略過　", new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialogInterface, int i) {
+
+			}
+		});
+
+		MyAlertDialog.show();
+	}
+
+	private void ShowMsgDialog_Order(String Msg, String category, String fc , String vc, String q, String p)
+	{
+		AlertDialog.Builder MyAlertDialog = new AlertDialog.Builder(this);
+		MyAlertDialog.setTitle(category);
+		Msg = Msg + "\n\n固定成本："+fc+"\n變動成本："+vc+"\n數量："+q+"\n價格："+p+"\n預估銷售額："+Integer.parseInt(p)*Integer.parseInt(q)+"\n";
+		MyAlertDialog.setMessage(Msg);
+		MyAlertDialog.setCancelable(false);
+
+		MyAlertDialog.setPositiveButton("　接受　", new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialogInterface, int i) {
+
+			}
+		});
+
+		MyAlertDialog.setNegativeButton("　放棄　", new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialogInterface, int i) {
+
+			}
+		});
+
+		MyAlertDialog.show();
+	}
 
 	@Override
 	public void onBackPressed() {
