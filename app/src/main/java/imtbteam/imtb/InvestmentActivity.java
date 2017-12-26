@@ -26,18 +26,18 @@ public class InvestmentActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_investment);
 
-        Bundle bundle = getIntent().getExtras(); // 利用 bundle 獲得掃到的 CardID
-        cardno_string = bundle.getString("id");
+      //  Bundle bundle = getIntent().getExtras(); // 利用 bundle 獲得掃到的 CardID
+      //  cardno_string = bundle.getString("id");
 
         dbHelper = new MyDBHelper(this);   // 打開資料庫
         db = dbHelper.getWritableDatabase();
 
-        edAmount = (EditText) findViewById(R.id.ed_amount);
-        RadioGroup rg = (RadioGroup)findViewById(R.id.radioGroup1);
-        buy = (RadioButton) findViewById(R.id.rbt_buy);
-        sell = (RadioButton) findViewById(R.id.rbt_sell);
+        edAmount = (EditText) findViewById(R.id.inv_ed_amount);
+        RadioGroup rg = (RadioGroup)findViewById(R.id.inv_radioGroup);
+        buy = (RadioButton) findViewById(R.id.inv_rbt_buy);
+        sell = (RadioButton) findViewById(R.id.inv_rbt_sell);
 
-        cardno_int = Integer.parseInt(cardno_string.substring(1));
+      //  cardno_int = Integer.parseInt(cardno_string.substring(1));
 
     }
 

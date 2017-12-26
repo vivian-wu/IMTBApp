@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
 
-        android:theme="@style/AppTheme">android:largeHeap="true"
+        android:theme="@style/AppTheme">
 
         <!-- android:roundIcon="@mipmap/ic_launcher_round"
              android:largeHeap="true"-->
@@ -40,6 +40,7 @@
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".AccountingActivity" />
+        <activity android:name=".InvestmentActivity" />
         <activity android:name=".JobScannerActivity" />
         <activity
             android:name=".assets_record"
@@ -49,7 +50,6 @@
             android:name=".about_us"
             android:label="@string/title_activity_about_us"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".temp"></activity>
     </application>
 
 </manifest>
