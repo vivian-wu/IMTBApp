@@ -2,10 +2,13 @@ package imtbteam.imtb;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -28,6 +31,9 @@ public class QRScannerActivity extends AppCompatActivity
 	private Button btn_scan;
 	private TextView txt_url;
 
+	private SQLiteDatabase db;
+	private MyDBHelper dbHelper;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 
@@ -44,6 +50,9 @@ public class QRScannerActivity extends AppCompatActivity
 		drawer.addDrawerListener(toggle);
 		toggle.syncState();
 
+		dbHelper = new MyDBHelper(this);
+		db = dbHelper.getWritableDatabase(); // 打開資料庫
+
 		this.btn_scan = (Button)findViewById(R.id.btn_scan);
 		this.txt_url = (TextView) findViewById(R.id.txt_url);
 
@@ -58,35 +67,58 @@ public class QRScannerActivity extends AppCompatActivity
 
 	public void onActivityResult(int requestCode, int resultCode, Intent intent){
 
-		AlertDialog.Builder MyAlertDialog = new AlertDialog.Builder(this);
 		IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
 
+		String content;
+		String query ;
+
 		if(result!=null){
-			String scanContent = result.getContents();
-			String scanFormat = result.getFormatName();
-			txt_url.setText(scanFormat+" \n"+scanContent);
+			String scanContent = result.getContents(); // 取得CardID -> scanContent
+			txt_url.setText(scanContent);
 
-
-			switch (scanContent)
+			if (scanContent.equals("F01"))
 			{
-				case "C010":
-				case "C011":
-				case "C012":
-				case "C013":
-				case "C017":
-				case "C018":
-					ShowMsgDialog_card("");
-					break;
+				Cursor cursor = db.rawQuery( "SELECT CardContent FROM CARD_OTHER WHERE CardOtherNo ='F01'",null);
+				cursor.moveToFirst();
+				content = cursor.getString(0);
+				Log.d("content:", content);
+
+				ShowMsgDialog("哦，這是！",content,"好耶！太棒了！");
+				cursor.close();
+
+			}
+			else if (scanContent.equals("F02"))
+			{
+				Cursor cursor = db.rawQuery( "SELECT CardContent FROM CARD_OTHER WHERE CardOtherNo ='F02'",null);
+				cursor.moveToFirst();
+				content = cursor.getString(0);
+				Log.d("content:", content);
+
+				ShowMsgDialog("哦，這是！",content,"好耶！太棒了！");
+				cursor.close();
+
+			}
+			else if (scanContent.equals("F03"))
+			{
+				Cursor cursor = db.rawQuery( "SELECT CardContent FROM CARD_OTHER WHERE CardOtherNo ='F03'",null);
+				cursor.moveToFirst();
+				content = cursor.getString(0);
+				Log.d("content:", content);
+
+				ShowMsgDialog("哦，這是！",content,"好耶！太棒了！");
+				cursor.close();
 
 			}
 
+
+
 			// 將 id 傳至下一 Activity
-			Intent intent2 = new Intent();
+			/*Intent intent2 = new Intent();
 			intent2.setClass(QRScannerActivity.this,AccountingActivity.class);
 			Bundle bundle = new Bundle();
 			bundle.putString("id",scanContent.toString());
 			intent2.putExtras(bundle);
-			startActivity(intent2);
+			startActivity(intent2);*/
 
 
 		}
@@ -96,22 +128,23 @@ public class QRScannerActivity extends AppCompatActivity
 
 	}
 
-	private void ShowMsgDialog_card(String Msg)
+	private void ShowMsgDialog(String title ,String Msg,String btnText)
 	{
 		AlertDialog.Builder MyAlertDialog = new AlertDialog.Builder(this);
-		MyAlertDialog.setTitle("哦，這是！");
+		MyAlertDialog.setTitle(title);
 		MyAlertDialog.setMessage(Msg);
+		MyAlertDialog.setCancelable(false);
 
-		MyAlertDialog.setNegativeButton("中間按鈕", new DialogInterface.OnClickListener() {
+		MyAlertDialog.setPositiveButton(btnText, new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialogInterface, int i) {
 
 			}
 		});
 
-		AlertDialog dialog = MyAlertDialog.create();
-		dialog.show();
+		MyAlertDialog.show();
 	}
+
 
 	@Override
 	public void onBackPressed() {

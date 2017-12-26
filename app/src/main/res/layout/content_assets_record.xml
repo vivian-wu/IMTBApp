@@ -142,6 +142,14 @@
         android:visibility="visible" />
 
     <TextView
+        android:id="@+id/asset_label_stock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="45dp"
+        android:text="　名稱　　　　金額　　　張數"
+        android:textSize="16sp" />
+
+    <TextView
         android:id="@+id/asset_text_stock"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
