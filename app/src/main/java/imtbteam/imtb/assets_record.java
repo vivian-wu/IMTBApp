@@ -28,7 +28,7 @@ import com.google.zxing.integration.android.IntentIntegrator;
 public class assets_record extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private TextView text_salary,text_cost,text_mcf,text_stock;
+    private TextView text_salary,text_cost,text_mcf,text_stock,text_cash;
     private SQLiteDatabase db;
     private MyDBHelper dbHelper;
     @Override
@@ -144,7 +144,7 @@ public class assets_record extends AppCompatActivity
 
         String query = "Select Salary,Cost,MonthCashFlow from SALARYRECORD where PlayerID='"+id+"' ORDER BY SRID DESC LIMIT 1";
         Cursor cursorinfo = db.rawQuery(query, null);
-// new String[]{scan_JobNo}
+
         do {
             cursorinfo.moveToFirst();
             idsalary = cursorinfo.getString(0);
@@ -162,9 +162,53 @@ public class assets_record extends AppCompatActivity
         text_mcf .setText(idMonthCashflow);
 
 
+    }
+    public void Get_Cash(){
+
+        dbHelper = new MyDBHelper(this);
+        db = dbHelper.getWritableDatabase(); // 打開資料庫
+
+        text_cash = (TextView)findViewById(R.id.asset_text_cash);
+
+        String sql = "";
+
+
+        /*抓出最後一筆玩家ID*/
+
+        String id = "";
+
+        Cursor cursorid = db.rawQuery("Select PlayerID from PLAYER ORDER BY PlayerID desc limit 1 ", null);
+        do {
+            cursorid.moveToLast();
+            id = cursorid.getString(0);
+            Log.d("playerID:", id);
+        } while (cursorid.moveToNext());
+
+        cursorid.close();
+
+        /*抓出他的現金資料*/
+
+        String idcash;
+
+        String query = "Select SUM(Amount) from CASHFLOW Where PlayerID='"+id+"'";
+        Cursor cursorinfo = db.rawQuery(query, null);
+
+        do {
+            cursorinfo.moveToFirst();
+            idcash = cursorinfo.getString(0);
+            Log.d("cash:", idcash);
+
+        } while (cursorinfo.moveToNext());
+
+        cursorinfo.close();
+
+        db.close();        // 關閉資料庫
+        text_cash.setText(idcash);
+
+
+
 
 
     }
-
 
 }

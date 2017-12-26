@@ -109,6 +109,53 @@ public class QRScannerActivity extends AppCompatActivity
 				cursor.close();
 
 			}
+			else{
+				String temp=scanContent.replace("C","");
+				int a=Integer.parseInt(temp);
+				if(a<=80){
+					System.out.println("執行機會命運");
+					Cursor cursor = db.rawQuery( "SELECT CardContent FROM CARD WHERE CardNo ='"+scanContent+"'",null);
+					cursor.moveToFirst();
+					content = cursor.getString(0);
+					Log.d("content:", content);
+
+					ShowMsgDialog("哦，這是！",content,"好耶！太棒了！");
+					cursor.close();
+				}
+				else if(a>80&&a<=100){
+					System.out.println("投資理財");
+					Cursor cursor = db.rawQuery( "SELECT CardContent FROM CARD_INVESTMENT WHERE CardInvestNo ='"+scanContent+"'",null);
+					cursor.moveToFirst();
+					content = cursor.getString(0);
+					Log.d("content:", content);
+
+					ShowMsgDialog("哦，這是！",content,"好耶！太棒了！");
+					cursor.close();
+				}
+				else if(a>100&&a<=115){
+					System.out.println("市場變化");
+					Cursor cursor = db.rawQuery( "SELECT CardContent FROM CARD_MARKET WHERE CardMarNo ='"+scanContent+"'",null);
+					cursor.moveToFirst();
+					content = cursor.getString(0);
+					Log.d("content:", content);
+
+					ShowMsgDialog("哦，這是！",content,"好耶！太棒了！");
+					cursor.close();
+				}
+				else if(a>115&&a<=145){
+					System.out.println("大小訂單");
+					Cursor cursor = db.rawQuery( "SELECT CardContent FROM CARD_ORDER WHERE CardOrderNo ='"+scanContent+"'",null);
+					cursor.moveToFirst();
+					content = cursor.getString(0);
+					Log.d("content:", content);
+
+					ShowMsgDialog("哦，這是！",content,"好耶！太棒了！");
+					cursor.close();
+				}
+				else{
+					ShowMsgDialog("哦，這是！","錯誤","好耶！太棒了！");
+				}
+			}
 
 
 
