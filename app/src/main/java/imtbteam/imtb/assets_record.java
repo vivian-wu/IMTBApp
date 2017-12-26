@@ -112,8 +112,6 @@ public class assets_record extends AppCompatActivity
     }
 
     public void Get_Salary(){
-        dbHelper = new MyDBHelper(this);
-        db = dbHelper.getWritableDatabase(); // 打開資料庫
 
         dbHelper = new MyDBHelper(this);
         db = dbHelper.getWritableDatabase(); // 打開資料庫

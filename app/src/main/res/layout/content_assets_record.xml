@@ -30,7 +30,7 @@
         android:textSize="24sp" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/textView8"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
@@ -39,7 +39,7 @@
         android:shadowDx="2"
         android:shadowDy="3"
         android:shadowRadius="2"
-        android:text="◆ 薪水資料"
+        android:text="◆  薪水資料"
         android:textColor="@color/taupe"
         android:textSize="20sp"
         android:visibility="visible"
@@ -123,6 +123,53 @@
             android:text="4845 "
             android:textSize="16sp"
             android:visibility="visible" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:shadowColor="@color/zxinglegacy_viewfinder_mask"
+        android:shadowDx="2"
+        android:shadowDy="3"
+        android:shadowRadius="2"
+        android:text="◆  現　　金"
+        android:textColor="@color/taupe"
+        android:textSize="20sp"
+        android:visibility="visible"
+        tools:layout_editor_absoluteX="32dp"
+        tools:layout_editor_absoluteY="3dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="45dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/asset_lable_cash"
+            android:layout_width="185dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="目前餘額："
+            android:textSize="16sp"
+            android:visibility="visible"
+            tools:layout_editor_absoluteX="32dp"
+            tools:layout_editor_absoluteY="39dp" />
+
+        <TextView
+            android:id="@+id/asset_text_cash"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="0"
+            android:textSize="16sp"
+            android:visibility="visible" />
+
     </LinearLayout>
 
     <TextView
@@ -136,7 +183,7 @@
         android:shadowDx="2"
         android:shadowDy="3"
         android:shadowRadius="2"
-        android:text="◆ 股票/基金"
+        android:text="◆  股票／基金"
         android:textColor="@color/taupe"
         android:textSize="20sp"
         android:visibility="visible" />
