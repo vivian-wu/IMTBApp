@@ -18,7 +18,8 @@ import android.widget.TextView;
 public class assets_record extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private TextView textView6,textView8,textView9,textView10,textView11,textView12,textView13,textView14,textView15,textView16,textView17,textView18;
+    private TextView text_salary,text_cost,text_mcf,text_stock;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,26 +27,18 @@ public class assets_record extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-        final TextView textView6 = (TextView)findViewById(R.id.textView6);
-        final TextView textView8 = (TextView)findViewById(R.id.textView8);
-        final TextView textView9 = (TextView)findViewById(R.id.textView9);
-        final TextView textView10 = (TextView)findViewById(R.id.textView10);
-        final TextView textView11 = (TextView)findViewById(R.id.textView11);
-        final TextView textView12 = (TextView)findViewById(R.id.textView12);
-        final TextView textView13 = (TextView)findViewById(R.id.textView13);
-        final TextView textView14 = (TextView)findViewById(R.id.textView14);
-        final TextView textView15 = (TextView)findViewById(R.id.textView15);
-        final TextView textView16 = (TextView)findViewById(R.id.textView16);
-        final TextView textView17 = (TextView)findViewById(R.id.textView17);
-        final TextView textView18 = (TextView)findViewById(R.id.textView18);
-        textView18.setMovementMethod(ScrollingMovementMethod.getInstance());
+
+        final TextView text_salary = (TextView)findViewById(R.id.asset_text_salary);
+        final TextView text_cost = (TextView)findViewById(R.id.asset_text_cost);
+        final TextView text_mcf = (TextView)findViewById(R.id.asset_text_mcf);
+
+        final TextView text_stock = (TextView)findViewById(R.id.asset_text_stock);
+       text_stock.setMovementMethod(ScrollingMovementMethod.getInstance());
 
     }
 

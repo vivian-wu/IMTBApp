@@ -13,9 +13,8 @@
     <TextView
         android:id="@+id/textView19"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:layout_weight="1"
         android:shadowColor="@color/zxinglegacy_viewfinder_mask"
         android:shadowDx="2"
         android:shadowDy="3"
@@ -30,37 +29,35 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/inv_text_stockname"
-            android:layout_width="match_parent"
+            android:id="@+id/inv_label_stockname"
+            android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
-            android:layout_weight="1"
             android:gravity="center"
             android:text="代碼："
             android:textSize="15dp" />
 
         <TextView
-            android:id="@+id/inv_input_stockname"
-            android:layout_width="match_parent"
+            android:id="@+id/inv_text_stockname"
+            android:layout_width="90dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:text="MIT 股票"
             android:textSize="15dp" />
 
         <TextView
-            android:id="@+id/inv_text_price"
-            android:layout_width="match_parent"
+            android:id="@+id/inv_label_price"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_marginRight="8dp"
             android:gravity="center"
             android:text="股票價格："
             android:textSize="15dp" />
 
         <TextView
-            android:id="@+id/inv_input_price"
-            android:layout_width="match_parent"
+            android:id="@+id/inv_text_price"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="4"
             android:text="10"
             android:textSize="15dp" />
 
@@ -68,40 +65,37 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/inv_text_div"
-            android:layout_width="match_parent"
+            android:id="@+id/inv_label_div"
+            android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
-            android:layout_weight="1"
             android:gravity="center"
             android:text="股利："
             android:textSize="15dp" />
 
         <TextView
-            android:id="@+id/inv_input_div"
-            android:layout_width="match_parent"
+            android:id="@+id/inv_text_div"
+            android:layout_width="90dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:text="0"
             android:textSize="15dp" />
 
         <TextView
-            android:id="@+id/inv_text_pricerange"
-            android:layout_width="match_parent"
+            android:id="@+id/inv_label_pricerange"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_marginRight="8dp"
             android:gravity="center"
             android:text="價格範圍："
             android:textSize="15dp" />
 
         <TextView
-            android:id="@+id/inv_input_pricerange"
-            android:layout_width="match_parent"
+            android:id="@+id/inv_text_pricerange"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="10 ~ 30"
@@ -111,16 +105,14 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1" />
+        android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_weight="1"
+        android:layout_marginTop="15dp"
         android:shadowColor="@color/zxinglegacy_viewfinder_mask"
         android:shadowDx="2"
         android:shadowDy="3"
@@ -135,6 +127,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
+        android:layout_marginTop="2dp"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -145,7 +138,8 @@
             android:layout_weight="1"
             android:buttonTint="@color/zxing_contents_text"
             android:checked="true"
-            android:text="買進" />
+            android:text="買進"
+            android:textSize="16sp" />
 
         <RadioButton
             android:id="@+id/inv_rbt_sell"
@@ -154,7 +148,8 @@
             android:layout_weight="1"
             android:buttonTint="@color/zxing_contents_text"
             android:checked="false"
-            android:text="賣出" />
+            android:text="賣出"
+            android:textSize="16sp" />
 
     </RadioGroup>
 
@@ -173,7 +168,7 @@
             android:gravity="center_vertical"
             android:text="數量："
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
         <EditText
             android:id="@+id/inv_ed_amount"
@@ -204,7 +199,7 @@
             android:id="@+id/inv_btn_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="0dp"
+            android:layout_marginTop="5dp"
             android:layout_weight="1"
             android:onClick="add"
             android:text="確定" />
@@ -240,7 +235,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/inv_iuput_stocks"
+            android:id="@+id/inv_text_stocks"
             android:layout_width="match_parent"
             android:layout_height="450dp"
             android:layout_marginLeft="30dp"
@@ -249,7 +244,7 @@
             android:background="@color/white_alpha"
             android:lineSpacingExtra="8sp"
             android:padding="15dp"
-            android:text="　名稱　　　　價格　　數量\nMIT 股票　 　　10　　　　5　"
+            android:text="　名稱　　　　價格　　數量\nMIT 股票　 　　10　　　　5"
             android:textColor="@color/black"
             android:textSize="16sp" />
     </LinearLayout>
