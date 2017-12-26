@@ -106,13 +106,16 @@ public class JobScannerActivity extends AppCompatActivity {
                 sql = "INSERT INTO SALARYRECORD (PlayerID, Salary, Cost, MonthCashFlow) values("+ playerId + ", "+ playerSalary +", "+ playerCost+", "+playerMCF+")";
                 db.execSQL(sql);
 
+                sql = "INSERT INTO CASHFLOW (CardNo, CardInvestNo, CardMarNo, CardOrderNo, CardOtherNo, PlayerID, CashCategory, Amount) values('n', 'n', 'n', 'n' ,'F00', "+playerId+", '收入', 25000)";
+                db.execSQL(sql);
+
                 Toast.makeText(JobScannerActivity.this, "新增資料成功！", Toast.LENGTH_SHORT).show();
 
 
                 /* ------------------------------測試 Start----------------------------*/
-                /*
 
-                Cursor c = db.rawQuery("SELECT * FROM SALARYRECORD", null);
+/*
+                Cursor c = db.rawQuery("SELECT * FROM CASHFLOW", null);
                 if (c.getCount()==0){
                     txt_job.setText("NO DATA");
                 }
@@ -128,12 +131,16 @@ public class JobScannerActivity extends AppCompatActivity {
                         str+= c.getString(2)+"\n";
                         str+= c.getString(3)+"\n";
                         str+= c.getString(4)+"\n";
+                        str+= c.getString(5)+"\n";
+                        str+= c.getString(6)+"\n";
+                        str+= c.getString(7)+"\n";
+                        str+= c.getString(8)+"\n";
                         str+="-----\n";
                     } while(c.moveToNext());    // 有一下筆就繼續迴圈
 
                     txt_job.setText(str);
                 }
-                */
+*/
                 /* ------------------------------測試 End----------------------------*/
 
                 db.close();        // 關閉資料庫

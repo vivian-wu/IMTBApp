@@ -436,6 +436,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
                 CardCategory + " TEXT NOT NULL, " +
                 CardContent + " TEXT NOT NULL)");
 
+        db.execSQL("INSERT INTO CARD_OTHER (CardOtherNo, CardCategory, CardContent) values( 'F00', '初始金額', '一開始您將擁有 25,000 的資金可供您使用')");
         db.execSQL("INSERT INTO CARD_OTHER (CardOtherNo, CardCategory, CardContent) values( 'F01', '薪水', '獲得本月薪水～')");
         db.execSQL("INSERT INTO CARD_OTHER (CardOtherNo, CardCategory, CardContent) values( 'F02', '脫魯', '恭喜您獲得男(女)朋友！如重複走到每月開銷增加，一人限走三次。')");
         db.execSQL("INSERT INTO CARD_OTHER (CardOtherNo, CardCategory, CardContent) values( 'F03', '結婚', '恭喜您與您的伴侶結婚啦！其他玩家每人必須支付紅包 1200 元，如重複走到則重新結婚一次，費用需再支付一次，一人限走三次。')");
