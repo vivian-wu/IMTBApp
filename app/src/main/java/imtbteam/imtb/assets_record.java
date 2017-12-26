@@ -1,9 +1,12 @@
 package imtbteam.imtb;
 
+import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,13 +16,21 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.widget.Toast;
+
+import com.google.zxing.integration.android.IntentIntegrator;
 
 public class assets_record extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private TextView text_salary,text_cost,text_mcf,text_stock;
-
+    private SQLiteDatabase db;
+    private MyDBHelper dbHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +50,7 @@ public class assets_record extends AppCompatActivity
 
         final TextView text_stock = (TextView)findViewById(R.id.asset_text_stock);
        text_stock.setMovementMethod(ScrollingMovementMethod.getInstance());
+        Get_Salary();
 
     }
 
@@ -97,6 +109,63 @@ public class assets_record extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void Get_Salary(){
+        dbHelper = new MyDBHelper(this);
+        db = dbHelper.getWritableDatabase(); // 打開資料庫
+
+        dbHelper = new MyDBHelper(this);
+        db = dbHelper.getWritableDatabase(); // 打開資料庫
+
+        text_salary = (TextView)findViewById(R.id.asset_text_salary);
+        text_cost = (TextView)findViewById(R.id.asset_text_cost);
+        text_mcf = (TextView)findViewById(R.id.asset_text_mcf);
+
+        String sql = "";
+
+
+        /*抓出最後一筆玩家ID*/
+
+        String id = "";
+
+        Cursor cursorid = db.rawQuery("Select PlayerID from PLAYER ORDER BY PlayerID desc limit 1 ", null);
+        do {
+            cursorid.moveToLast();
+            id = cursorid.getString(0);
+            Log.d("playerID:", id);
+        } while (cursorid.moveToNext());
+
+        cursorid.close();
+
+        /*抓出他的職業資料*/
+
+        String idsalary;
+        String idcost;
+        String idMonthCashflow;
+
+        String query = "Select Salary,Cost,MonthCashFlow from SALARYRECORD where PlayerID='"+id+"' ORDER BY SRID DESC LIMIT 1";
+        Cursor cursorinfo = db.rawQuery(query, null);
+// new String[]{scan_JobNo}
+        do {
+            cursorinfo.moveToFirst();
+            idsalary = cursorinfo.getString(0);
+            idcost = cursorinfo.getString(1);
+            idMonthCashflow=cursorinfo.getString(2);
+            Log.d("salary:", idsalary + ", " + idcost);
+
+        } while (cursorinfo.moveToNext());
+
+        cursorinfo.close();
+
+        db.close();        // 關閉資料庫
+        text_salary.setText(idsalary);
+        text_cost.setText(idcost);
+        text_mcf .setText(idMonthCashflow);
+
+
+
+
     }
 
 
