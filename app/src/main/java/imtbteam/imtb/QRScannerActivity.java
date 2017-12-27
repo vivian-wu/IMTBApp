@@ -33,6 +33,7 @@ public class QRScannerActivity extends AppCompatActivity
 
 	private SQLiteDatabase db;
 	private MyDBHelper dbHelper;
+	private String scanContent="";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +75,7 @@ public class QRScannerActivity extends AppCompatActivity
 		String query ;
 
 		if(result!=null){
-			String scanContent = result.getContents(); // 取得CardID -> scanContent
+			scanContent = result.getContents(); // 取得CardID -> scanContent
 			txt_url.setText(scanContent);
 
 			if (scanContent.equals("F01"))
@@ -196,7 +197,7 @@ public class QRScannerActivity extends AppCompatActivity
 		MyAlertDialog.setPositiveButton(btnText, new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialogInterface, int i) {
-
+				String x=Set_Card(scanContent);
 			}
 		});
 
@@ -312,5 +313,169 @@ public class QRScannerActivity extends AppCompatActivity
 		DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 		drawer.closeDrawer(GravityCompat.START);
 		return true;
+	}
+	public String Set_F01(String CardNo){		//薪水
+
+        /*抓出最後一筆玩家ID*/
+
+		String id = "";
+
+		Cursor cursorid = db.rawQuery("Select PlayerID from PLAYER ORDER BY PlayerID desc limit 1 ", null);
+		if (cursorid.getCount() != 0){
+			do {
+				cursorid.moveToLast();
+				id = cursorid.getString(0);
+				Log.d("薪水查詢 - playerID:", id);
+			} while (cursorid.moveToNext());
+		}
+		else {
+			return "";
+		}
+
+		cursorid.close();
+
+        /*抓出他的最新一筆月現金流*/
+		int Salary;
+
+		String query = "SELECT MonthCashFlow from SALARYRECORD WHERE PlayerID='"+id+"' ORDER BY SRID desc LIMIT 1";
+		Cursor cursorinfo = db.rawQuery(query, null);
+
+
+		if (cursorinfo.getCount() != 0){
+			do {
+				cursorinfo.moveToFirst();
+				Salary = cursorinfo.getInt(0);
+				Log.d("月現金流:",Integer.toString( Salary));
+
+			} while (cursorinfo.moveToNext());
+		}
+		else{
+			return "";
+		}
+		cursorinfo.close();
+		String sql = "INSERT INTO CASHFLOW( CardNo, CardInvestNo, CardMarNo, CardOtherNo, CardOrderNo, PlayerID, CashCategory, Amount) VALUES ( 'n', 'n', 'n', '"+CardNo+"', 'n', "+id+", '收入', "+Salary+")";
+		db.execSQL(sql);
+
+		return "";
+
+
+	}
+
+	public String Set_F02(String CardNo){		//脫魯>>新增薪水表  >>新增現金紀錄(
+
+        /*抓出最後一筆玩家ID*/
+
+		String id = "";
+
+		Cursor cursorid = db.rawQuery("Select PlayerID from PLAYER ORDER BY PlayerID desc limit 1 ", null);
+		if (cursorid.getCount() != 0){
+			do {
+				cursorid.moveToLast();
+				id = cursorid.getString(0);
+				Log.d("薪水查詢 - playerID:", id);
+			} while (cursorid.moveToNext());
+		}
+		else {
+			return "";
+		}
+
+		cursorid.close();
+
+        /*抓出他的最新一筆月現金流*/
+		int Salary;
+
+		String query = "SELECT MonthCashFlow from SALARYRECORD WHERE PlayerID='"+id+"' ORDER BY SRID desc LIMIT 1";
+		Cursor cursorinfo = db.rawQuery(query, null);
+
+
+		if (cursorinfo.getCount() != 0){
+			do {
+				cursorinfo.moveToFirst();
+				Salary = cursorinfo.getInt(0);
+				Log.d("月現金流:",Integer.toString( Salary));
+
+			} while (cursorinfo.moveToNext());
+		}
+		else{
+			return "";
+		}
+		cursorinfo.close();
+		String sql = "INSERT INTO CASHFLOW( CardNo, CardInvestNo, CardMarNo, CardOtherNo, CardOrderNo, PlayerID, CashCategory, Amount) VALUES ( 'n', 'n', 'n', '"+CardNo+"', 'n', "+id+", '收入', "+Salary+")";
+		db.execSQL(sql);
+
+		return "";
+
+	}
+
+	public String Set_F03(String CardNo){		//結婚-->先不做
+
+
+		return "";
+
+	}
+
+	public String Set_Card(String CardNo){		//機會命運天使惡魔
+
+		/*抓出最後一筆玩家ID*/
+
+		String id = "";
+
+		Cursor cursorid = db.rawQuery("Select PlayerID from PLAYER ORDER BY PlayerID desc limit 1 ", null);
+		if (cursorid.getCount() != 0){
+			do {
+				cursorid.moveToLast();
+				id = cursorid.getString(0);
+				Log.d("新增 playerID:", id);
+			} while (cursorid.moveToNext());
+		}
+		else {
+			return "";
+		}
+
+		cursorid.close();
+
+        /*抓出卡片金額*/
+		int Amount;
+
+		String query = "SELECT CashAmount FROM CARD where CardNo='"+CardNo+"'";
+		Cursor cursorinfo = db.rawQuery(query, null);
+		if (cursorinfo.getCount() != 0){
+			do {
+				cursorinfo.moveToFirst();
+				Amount = cursorinfo.getInt(0);
+				Log.d("卡片金額:",Integer.toString( Amount));
+
+			} while (cursorinfo.moveToNext());
+		}
+		else{
+			return "";
+		}
+		cursorinfo.close();
+		String sql = "INSERT INTO CASHFLOW( CardNo, CardInvestNo, CardMarNo, CardOtherNo, CardOrderNo, PlayerID, CashCategory, Amount) VALUES ( '"+CardNo+"', 'n', 'n', 'n', 'n', "+id+", '暫時', "+Amount+")";
+		db.execSQL(sql);
+
+		return "";
+
+	}
+
+	public String Set_Investment(String CardNo){		//投資理財
+
+
+		return "";
+
+	}
+
+	public String Set_Order(String CardNo){		//大小訂單
+
+
+		return "";
+
+	}
+
+	public String Set_Market(String CardNo){		//市場變化
+
+
+		return "";
+
 	}
 }
