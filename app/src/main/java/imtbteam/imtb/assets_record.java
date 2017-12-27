@@ -3,6 +3,7 @@ package imtbteam.imtb;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.text.method.ScrollingMovementMethod;
@@ -44,18 +45,20 @@ public class assets_record extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        final TextView text_salary = (TextView)findViewById(R.id.asset_text_salary);
-        final TextView text_cost = (TextView)findViewById(R.id.asset_text_cost);
-        final TextView text_mcf = (TextView)findViewById(R.id.asset_text_mcf);
+        dbHelper = new MyDBHelper(this);
+        db = dbHelper.getWritableDatabase(); // 打開資料庫
 
-        final TextView text_stock = (TextView)findViewById(R.id.asset_text_stock);
+
+        text_stock = (TextView)findViewById(R.id.asset_text_stock);
         text_stock.setMovementMethod(ScrollingMovementMethod.getInstance());
 
         String StockContent=Get_Stock();
         text_stock.setText(StockContent);
 
-        String x=Get_Salary();
+        Get_Salary();
         Get_Cash();
+
+        db.close();        // 關閉資料庫
 
     }
 
@@ -118,34 +121,26 @@ public class assets_record extends AppCompatActivity
 
     public String Get_Salary(){
 
-        dbHelper = new MyDBHelper(this);
-        db = dbHelper.getWritableDatabase(); // 打開資料庫
-
         text_salary = (TextView)findViewById(R.id.asset_text_salary);
         text_cost = (TextView)findViewById(R.id.asset_text_cost);
         text_mcf = (TextView)findViewById(R.id.asset_text_mcf);
-
-        String sql = "";
-
 
         /*抓出最後一筆玩家ID*/
 
         String id = "";
 
         Cursor cursorid = db.rawQuery("Select PlayerID from PLAYER ORDER BY PlayerID desc limit 1 ", null);
-        if (cursorid.moveToNext())
+        if (cursorid.getCount()>0)
         {
             do {
-                if(db.isReadOnly()){
                     cursorid.moveToLast();
                     id = cursorid.getString(0);
-                    Log.d("playerID:", id);
-                }
+                    Log.d("薪水- playerID:", id);
 
             } while (cursorid.moveToNext());
         }
         else{
-            return"";
+            return "";
         }
 
         cursorid.close();
@@ -156,25 +151,25 @@ public class assets_record extends AppCompatActivity
         String idcost="";
         String idMonthCashflow="";
 
-        String query = "Select Salary,Cost,MonthCashFlow from SALARYRECORD where PlayerID='"+id+"' ORDER BY SRID DESC LIMIT 1";
+        String query = "Select Salary, Cost, MonthCashFlow from SALARYRECORD where PlayerID='"+id+"' ORDER BY SRID DESC LIMIT 1";
         Cursor cursorinfo = db.rawQuery(query, null);
-        if (cursorid.moveToNext()){
+        if (cursorinfo.getCount()>0){
             do {
                 cursorinfo.moveToFirst();
                 idsalary = cursorinfo.getString(0);
                 idcost = cursorinfo.getString(1);
-                idMonthCashflow=cursorinfo.getString(2);
-                Log.d("salary:", idsalary + ", " + idcost);
+                idMonthCashflow = cursorinfo.getString(2);
+                Log.d("薪水- salary:", idsalary + ", " + idcost);
 
             } while (cursorinfo.moveToNext());
         }
         else{
+            System.out.print("沒有薪水資料");
             return "";
         }
 
         cursorinfo.close();
 
-        db.close();        // 關閉資料庫
         text_salary.setText(idsalary);
         text_cost.setText(idcost);
         text_mcf .setText(idMonthCashflow);
@@ -183,28 +178,23 @@ public class assets_record extends AppCompatActivity
     }
     public String Get_Cash(){
 
-        dbHelper = new MyDBHelper(this);
-        db = dbHelper.getWritableDatabase(); // 打開資料庫
-
         text_cash = (TextView)findViewById(R.id.asset_text_cash);
-
-        String sql = "";
-
 
         /*抓出最後一筆玩家ID*/
 
         String id = "";
 
         Cursor cursorid = db.rawQuery("Select PlayerID from PLAYER ORDER BY PlayerID desc limit 1 ", null);
-        if (cursorid.moveToNext()){
+        if (cursorid.getCount()>0){
             do {
                 cursorid.moveToLast();
                 id = cursorid.getString(0);
-                Log.d("playerID:", id);
+                Log.d("現金 - playerID:", id);
             } while (cursorid.moveToNext());
         }
         else {
             return "";
+
         }
 
         cursorid.close();
@@ -215,21 +205,22 @@ public class assets_record extends AppCompatActivity
 
         String query = "Select SUM(Amount) from CASHFLOW Where PlayerID='"+id+"'";
         Cursor cursorinfo = db.rawQuery(query, null);
-        if (cursorid.moveToNext()){
+
+        if (cursorinfo.moveToNext()){
             do {
                 cursorinfo.moveToFirst();
                 idcash = cursorinfo.getString(0);
-                Log.d("cash:", idcash);
+                Log.d("現金 - cash:", idcash);
 
             } while (cursorinfo.moveToNext());
         }
         else{
+            System.out.print("沒有現金資料");
             return "";
         }
 
         cursorinfo.close();
 
-        db.close();        // 關閉資料庫
         text_cash.setText(idcash);
         return "";
 
@@ -237,21 +228,16 @@ public class assets_record extends AppCompatActivity
     }
     public String Get_Stock(){
 
-        dbHelper = new MyDBHelper(this);
-        db = dbHelper.getWritableDatabase(); // 打開資料庫
-
-        String sql = "";
-
         /*抓出最後一筆玩家ID*/
 
         String id = "";
 
         Cursor cursorid = db.rawQuery("Select PlayerID from PLAYER ORDER BY PlayerID desc limit 1 ", null);
-        if (cursorid.moveToNext()){
+        if (cursorid.getCount() != 0){
             do {
                 cursorid.moveToLast();
                 id = cursorid.getString(0);
-                Log.d("playerID:", id);
+                Log.d("投資 - playerID:", id);
             } while (cursorid.moveToNext());
         }
         else {
@@ -266,23 +252,24 @@ public class assets_record extends AppCompatActivity
 
         String query = "Select t1.StockName,t2.Price,t2.Quantity from CARD_INVESTMENT t1 INNER JOIN PLAYER_INVESTMENT t2 on t1.CardInvestNo=t2.CardNo Where t2.PlayerID='"+id+"'";
         Cursor cursorinfo = db.rawQuery(query, null);
-        if (cursorid.moveToNext()){
+
+
+        if (cursorinfo.getCount() != 0){
             do {
                 cursorinfo.moveToFirst();
                 temp = temp+cursorinfo.getString(0);    //名稱
                 temp = temp+"　 　　"+cursorinfo.getString(1);     //金額
                 temp = temp+"　　　　"+cursorinfo.getString(2)+"\n";  //張數
-                Log.d("股票資料:", temp);
+                Log.d("現金 - 股票資料:", temp);
 
             } while (cursorinfo.moveToNext());
         }
         else{
             return "";
         }
-
         cursorinfo.close();
 
-        db.close();        // 關閉資料庫
+
         return temp;
 
 
