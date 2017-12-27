@@ -15,12 +15,17 @@ import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.ListView;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.widget.SimpleCursorAdapter;
+
 
 public class FinanceActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-     RadioGroup radioGroup1;
 
-
+    private SQLiteDatabase db;
+    private MyDBHelper dbHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -28,26 +33,28 @@ public class FinanceActivity extends AppCompatActivity
         setContentView(R.layout.activity_finance);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        RadioButton rbt_rev = (RadioButton) findViewById(R.id.rbt_rev);
-        RadioButton rbt_exp = (RadioButton) findViewById(R.id.rbt_exp);
-
-/*
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(
-                        new Intent(FinanceActivity.this, AccountingActivity.class));
-            }
-        });
-*/
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+
+        ListView list = (ListView) findViewById(R.id.cash_listview);
+
+
+        dbHelper = new MyDBHelper(this); // 打開資料庫
+        db = dbHelper.getReadableDatabase();
+
+        Cursor c = db.query("CASHFLOW", null, null, null, null, null, null);
+
+        SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.finance_row, c,
+                new String[] {"_id", "CashCategory", "Amount"},
+                new int[] {R.id.item_id, R.id.item_category, R.id.item_amount},
+                0);
+        list.setAdapter(adapter);
+
+
     }
 
 
