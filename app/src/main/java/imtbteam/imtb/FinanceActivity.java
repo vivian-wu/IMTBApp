@@ -12,7 +12,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
+import android.widget.ListAdapter;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.ListView;
@@ -26,6 +28,14 @@ public class FinanceActivity extends AppCompatActivity
 
     private SQLiteDatabase db;
     private MyDBHelper dbHelper;
+
+    String[] cashid ;
+    String[] category;
+    String[] cardcontent;
+    String[] amount;
+    Adapter_ListViewActivity adapter;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -46,17 +56,20 @@ public class FinanceActivity extends AppCompatActivity
         dbHelper = new MyDBHelper(this); // 打開資料庫
         db = dbHelper.getReadableDatabase();
 
-        Cursor c = db.query("CASHFLOW", null, null, null, null, null, null);
+        //載入陣列
+        cashid = new String[] {"1","2"};
+        category = new String[] {"機會","命運"};
+        cardcontent = new String[] {"內容","內容"};
+        amount = new String[] {"11231","231312"};
 
-        SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.finance_row, c,
-                new String[] {"_id", "CashCategory", "Amount"},
-                new int[] {R.id.item_id, R.id.item_category, R.id.item_amount},
-                0);
+        adapter = new Adapter_ListViewActivity(FinanceActivity.this,
+                R.layout.finance_row,
+                cashid,
+                category,
+                cardcontent,amount);
+
         list.setAdapter(adapter);
-
-
     }
-
 
 
     @Override
