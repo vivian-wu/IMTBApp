@@ -234,7 +234,7 @@
     <color name="darkgray">#A9A9A9</color>
     <color name="khaki">#ADA96E</color>
     <color name="lightblue">#ADD8E6</color>
-    <color name="light_blue">#addfff</color>
+    <color name="light_blue">#ADDFFF</color>
     <color name="greenyellow">#ADFF2F</color>
     <color name="dark_goldenrod">#AF7817</color>
     <color name="coral_blue">#AFDCEC</color>
@@ -438,10 +438,8 @@
     <color name="parchment">#FFFFC2</color>
     <color name="cream">#FFFFCC</color>
     <color name="lightyellow">#FFFFE0</color>
-    <color name="ivory">#fffff0</color>
+    <color name="ivory">#FFFFF0</color>
     <color name="white">#ffffff</color>
     <color name="blue_hosta_alpha">#d777bfc7</color>
     <color name="white_alpha">#82fefcff</color>
-    <color name="cyan_alpha">#9ea4d2d7</color>
-    <color name="cyan_alpha181">#c39bd0d5</color>
 </resources>
