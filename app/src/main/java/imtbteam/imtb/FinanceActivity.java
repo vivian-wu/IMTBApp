@@ -1,8 +1,11 @@
 package imtbteam.imtb;
 
+<<<<<<< HEAD
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+=======
+>>>>>>> Adds-ListView-to-FinanceActivity
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -14,6 +17,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+<<<<<<< HEAD
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
@@ -26,6 +30,8 @@ public class FinanceActivity extends AppCompatActivity
     private SQLiteDatabase db;
     private MyDBHelper dbHelper;
     private TextView textView;
+=======
+>>>>>>> Adds-ListView-to-FinanceActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -33,6 +39,7 @@ public class FinanceActivity extends AppCompatActivity
         setContentView(R.layout.activity_finance);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+<<<<<<< HEAD
         RadioButton rbt_rev = (RadioButton) findViewById(R.id.rbt_rev);
         RadioButton rbt_exp = (RadioButton) findViewById(R.id.rbt_exp);
         textView = (TextView)findViewById(R.id.textView9);
@@ -51,6 +58,8 @@ public class FinanceActivity extends AppCompatActivity
             }
         });
 */
+=======
+>>>>>>> Adds-ListView-to-FinanceActivity
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
