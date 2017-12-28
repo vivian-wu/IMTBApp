@@ -217,8 +217,12 @@ public class QRScannerActivity extends AppCompatActivity
 			@Override
 			public void onClick(DialogInterface dialogInterface, int i) {
 
+
 				Intent intent = new Intent();
 				intent.setClass(QRScannerActivity.this, InvestmentActivity.class);
+				Bundle bundle = new Bundle();
+				bundle.putString("id",scanContent.toString());
+				intent.putExtras(bundle);
 				startActivity(intent);
 
 			}
