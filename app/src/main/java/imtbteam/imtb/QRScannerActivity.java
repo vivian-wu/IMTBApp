@@ -245,14 +245,14 @@ public class QRScannerActivity extends AppCompatActivity
 		MyAlertDialog.setPositiveButton("　接受　", new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialogInterface, int i) {
-				x=Set_OrderCard(scanContent);
+				x=Set_OrderCardV(scanContent);
 			}
 		});
 
 		MyAlertDialog.setNegativeButton("　放棄　", new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialogInterface, int i) {
-
+				x=Set_OrderCardN(scanContent);
 			}
 		});
 
@@ -473,7 +473,7 @@ public class QRScannerActivity extends AppCompatActivity
 
 	}
 
-	public String Set_OrderCard(String CardNo){		//大小訂單
+	public String Set_OrderCardV(String CardNo){		//大小訂單確認
 /*抓出最後一筆玩家ID*/
 
 		String id = "";
@@ -517,7 +517,51 @@ public class QRScannerActivity extends AppCompatActivity
 
 	}		//還沒做跟市場變化相關的部分
 
-	public String Set_MarketCard(String CardNo){		//市場變化-->抓ID(ok)>抓卡片資料(x)>寫入Player_Market表(x)>寫入現金紀錄(ok)
+	public String Set_OrderCardN(String CardNo){		//大小訂單放棄
+
+		/*抓出最後一筆玩家ID*/
+		String id = "";
+
+		Cursor cursorid = db.rawQuery("Select PlayerID from PLAYER ORDER BY PlayerID desc limit 1 ", null);
+		if (cursorid.getCount() != 0){
+			do {
+				cursorid.moveToLast();
+				id = cursorid.getString(0);
+				Log.d("新增 playerID:", id);
+			} while (cursorid.moveToNext());
+		}
+		else {
+			return "";
+		}
+
+		cursorid.close();
+		/*抓出卡片金額*/
+		int Amount;
+
+		String query = "Select -FixedCost  " +
+				"from CARD_ORDER " +
+				"Where CardOrderNo='"+CardNo+"'";
+		Cursor cursorinfo = db.rawQuery(query, null);
+		if (cursorinfo.getCount() != 0){
+			do {
+				cursorinfo.moveToFirst();
+				Amount = cursorinfo.getInt(0);
+				Log.d("卡片金額:",Integer.toString( Amount));
+
+			} while (cursorinfo.moveToNext());
+		}
+		else{
+			return "";
+		}
+		cursorinfo.close();
+		//新增到現金流量表
+		String sql = "INSERT INTO CASHFLOW( CardNo, CardInvestNo, CardMarNo, CardOtherNo, CardOrderNo, PlayerID, CashCategory, Amount) VALUES ( 'n', 'n', 'n', 'n', '"+CardNo+"', "+id+", '暫時', "+Amount+")";
+		db.execSQL(sql);
+		return "";
+
+	}		//還沒做跟市場變化相關的部分
+
+	public String Set_MarketCard(String CardNo){		//市場變化-->抓ID(ok)>抓卡片資料(o)>寫入Player_Market表(o)>寫入現金紀錄(ok)
 
 		/*抓出最後一筆玩家ID*/
 
@@ -538,15 +582,17 @@ public class QRScannerActivity extends AppCompatActivity
 		cursorid.close();
 
         /*抓出卡片資料*/
-		int Amount;
+		String VC;
+		double VR;
 
-		String query = "SELECT CashAmount FROM CARD where CardNo='"+CardNo+"'";
+		String query = "Select VariationCategory,VariationRange from CARD_MARKET  where CardMarNo='"+CardNo+"'";
 		Cursor cursorinfo = db.rawQuery(query, null);
 		if (cursorinfo.getCount() != 0){
 			do {
 				cursorinfo.moveToFirst();
-				Amount = cursorinfo.getInt(0);
-				Log.d("卡片金額:",Integer.toString( Amount));
+				VC= cursorinfo.getString(0);
+				VR =cursorinfo.getDouble(1);
+				Log.d("卡片分類:",VC+"卡片Range:"+String.valueOf(VR));
 
 			} while (cursorinfo.moveToNext());
 		}
@@ -554,6 +600,12 @@ public class QRScannerActivity extends AppCompatActivity
 			return "";
 		}
 		cursorinfo.close();
+
+		//插入玩家_市場變化表
+		String PMsql = "INSERT INTO PLAYER_MARKET(CardNo, PlayerID,VariationCategory, VariationRange, ) VALUES ('"+CardNo+"', '"+id+"', '"+VC+"', "+VR+")";
+		db.execSQL(PMsql);
+
+		//插入現金流量表
 		String CFsql = "INSERT INTO CASHFLOW( CardNo, CardInvestNo, CardMarNo, CardOtherNo, CardOrderNo, PlayerID, CashCategory, Amount) VALUES ( 'n', 'n', '"+CardNo+"', 'n', 'n', "+id+", '暫時', '0')";
 		db.execSQL(CFsql);
 
