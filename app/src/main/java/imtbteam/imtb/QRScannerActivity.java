@@ -77,7 +77,7 @@ public class QRScannerActivity extends AppCompatActivity
 
 		if(result!=null){
 			scanContent = result.getContents(); // 取得CardID -> scanContent
-			txt_url.setText(scanContent);
+			//txt_url.setText(scanContent);
 
 			if (scanContent.equals("F01"))
 			{
@@ -115,7 +115,19 @@ public class QRScannerActivity extends AppCompatActivity
 			else{
 				String temp=scanContent.replace("C","");
 				int a=Integer.parseInt(temp);
-				if(a<=80){
+				if(a > 9 && a < 13)
+                {
+                    System.out.println("執行機會命運");
+                    Cursor cursor = db.rawQuery( "SELECT CardCategory, CardContent FROM CARD WHERE CardNo ='"+scanContent+"'",null);
+                    cursor.moveToFirst();
+                    category = cursor.getString(0);
+                    content = cursor.getString(1);
+                    Log.d("content:", content);
+
+                    ShowMsgDialog_justshow(category,content,"　確定　");
+                    cursor.close();
+                }
+				else if(a<=80){
 					System.out.println("執行機會命運");
 					Cursor cursor = db.rawQuery( "SELECT CardCategory, CardContent FROM CARD WHERE CardNo ='"+scanContent+"'",null);
 					cursor.moveToFirst();
@@ -187,6 +199,22 @@ public class QRScannerActivity extends AppCompatActivity
 		}
 
 	}
+    private void ShowMsgDialog_justshow(String title ,String Msg,String btnText)
+    {
+        AlertDialog.Builder MyAlertDialog = new AlertDialog.Builder(this);
+        MyAlertDialog.setTitle(title);
+        MyAlertDialog.setMessage(Msg);
+        MyAlertDialog.setCancelable(false);
+
+        MyAlertDialog.setPositiveButton(btnText, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+
+        MyAlertDialog.show();
+    }
 
 	private void ShowMsgDialog(String title ,String Msg,String btnText)
 	{
