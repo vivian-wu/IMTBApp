@@ -57,12 +57,15 @@ public class MainActivity extends AppCompatActivity
 
 		Cursor cursor = db.rawQuery("Select PlayerID,PlayerName from PLAYER",null);
 
-		do {
-			cursor.moveToLast();
-			id = cursor.getString(0);
-			name = cursor.getString(1);
-			Log.d("playerID:", id +"name:"+name);
-		}while(cursor.moveToNext());
+		if(cursor.getCount() != 0) {
+
+			do {
+				cursor.moveToLast();
+				id = cursor.getString(0);
+				name = cursor.getString(1);
+				Log.d("playerID:", id + "name:" + name);
+			} while (cursor.moveToNext());
+		}
 
 		cursor.close();
 
@@ -76,14 +79,17 @@ public class MainActivity extends AppCompatActivity
 				"WHERE PlayerID='"+id+"'";
 
 		Cursor cursorjob = db.rawQuery(query, null);
+		if (cursorjob.getCount() != 0) {
 
-		do {
-			cursorjob.moveToLast();
-			job = cursorjob.getString(0);
-			Log.d("JobName",job );
-		}while(cursorjob.moveToNext());
+			do {
+				cursorjob.moveToLast();
+				job = cursorjob.getString(0);
+				Log.d("JobName", job);
+			} while (cursorjob.moveToNext());
+		}
 
 		cursorjob.close();
+		db.close();
 
 		job_Text.setText(job);
 
