@@ -64,9 +64,32 @@ public class QRScannerActivity extends AppCompatActivity
 				new IntentIntegrator( QRScannerActivity.this).initiateScan();
 			}
 		});
-
+		String PStatus=updateStatus();
+		if(PStatus=="drop"){
+			ShowMsgDialog_Drop("恭喜您！","跳出儲蓄圈啦～！\n世界變得更寬廣了，還不加緊腳步邁向大老闆之路！","　確定　");
+		}
 	}
+	private void ShowMsgDialog_Drop(String title ,String Msg,String btnText)
+	{
+		AlertDialog.Builder MyAlertDialog = new AlertDialog.Builder(this);
+		MyAlertDialog.setTitle(title);
+		MyAlertDialog.setMessage(Msg);
+		MyAlertDialog.setCancelable(false);
 
+		MyAlertDialog.setPositiveButton("　確定！　", new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialogInterface, int i) {
+
+
+				Intent intent = new Intent();
+				intent.setClass(QRScannerActivity.this, MainActivity.class);
+				startActivity(intent);
+
+			}
+		});
+
+		MyAlertDialog.show();
+	}
 	public void onActivityResult(int requestCode, int resultCode, Intent intent){
 
 		IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
@@ -614,6 +637,53 @@ public class QRScannerActivity extends AppCompatActivity
 		db.execSQL(CFsql);
 
 		return "";
+
+	}
+
+	public String updateStatus(){
+
+		/*抓出最後一筆玩家ID*/
+		String id = "";
+
+		Cursor cursorid = db.rawQuery("Select PlayerID from PLAYER ORDER BY PlayerID desc limit 1 ", null);
+		if (cursorid.getCount() != 0){
+			do {
+				cursorid.moveToLast();
+				id = cursorid.getString(0);
+				Log.d("新增 playerID:", id);
+			} while (cursorid.moveToNext());
+		}
+		else {
+			return "";
+		}
+		 /*抓出他的現金資料*/
+		int idcash;
+
+		String query = "Select SUM(Amount) from CASHFLOW Where PlayerID='"+id+"'";
+		Cursor cursorinfo = db.rawQuery(query, null);
+
+		if (cursorinfo.moveToNext()){
+			cursorinfo.moveToFirst();
+			do {
+				idcash = cursorinfo.getInt(0);
+				Log.d("現金 - cash:", String.valueOf(idcash));
+
+			} while (cursorinfo.moveToNext());
+		}
+		else{
+			System.out.print("沒有現金資料");
+			return "";
+		}
+
+		cursorinfo.close();
+		if(idcash>130000){
+ 			String Statussql="UPDATE PLAYER SET Status=2 WHERE PlayerID = "+id+";";
+ 			db.execSQL(Statussql);
+			return "drop";
+		}
+		else{
+			return "";
+		}
 
 	}
 }

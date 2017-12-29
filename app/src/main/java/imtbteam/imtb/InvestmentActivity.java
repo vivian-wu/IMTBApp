@@ -73,7 +73,7 @@ public class InvestmentActivity extends AppCompatActivity
                     Status="";
                     Status=BuyStock(cardno_string,Amount);
                     if(Status=="y"){
-                        ShowMsgDialog_Success("投資理財","購買股票成功!","　確定　");
+                        ShowMsgDialog_Success("投資理財","購買成功!","　確定　");
                         db.close();
                     }
 
@@ -89,7 +89,7 @@ public class InvestmentActivity extends AppCompatActivity
                     Status="";
                     Status=SellStock(cardno_string,Amount);
                     if(Status=="y"){
-                        ShowMsgDialog_Success("投資理財","賣出股票成功!","　確定　");
+                        ShowMsgDialog_Success("投資理財","成功賣出!","　確定　");
                         db.close();
                     }
 
