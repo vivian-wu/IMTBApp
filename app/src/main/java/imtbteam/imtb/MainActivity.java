@@ -153,11 +153,23 @@ public class MainActivity extends AppCompatActivity
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 
-		Intent intent = new Intent();
-		intent.setClass(MainActivity.this, JobScannerActivity.class);
-		startActivity(intent);
+		if (id== R.id.action_settings)
+		{
+			Intent intent = new Intent();
+			intent.setClass(MainActivity.this, ReportActivity.class);
+			startActivity(intent);
+			onBackPressed();
+		}
+		else if (id==R.id.action_job)
+		{
+			Intent intent = new Intent();
+			intent.setClass(MainActivity.this, JobScannerActivity.class);
+			startActivity(intent);
+			onBackPressed();
+		}
 
-		onBackPressed();
+
+
 
 		return super.onOptionsItemSelected(item);
 	}

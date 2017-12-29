@@ -1,22 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/cornsilk"
     tools:context="imtbteam.imtb.ReportActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="15dp">
 
         <TextView
             android:id="@+id/textView9"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="25dp"
-            android:text="現金流量表" />
+            android:background="@color/lemon_chiffon"
+            android:shadowColor="@color/zxing_viewfinder_mask"
+            android:shadowDx="3"
+            android:shadowDy="2"
+            android:shadowRadius="2"
+            android:text="現金流量表"
+            android:textAlignment="center"
+            android:textColor="@color/charcoal"
+            android:textSize="25dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -27,7 +36,12 @@
                 android:id="@+id/textView10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="營運現金流量" />
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:text="營運現金流量"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -35,25 +49,33 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/textView11"
-                    android:layout_width="0dp"
+                    android:id="@+id/report_text1"
+                    android:layout_width="35dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="科目" />
+                    android:layout_marginLeft="18dp"
+                    android:layout_weight="3"
+                    android:text="科目"
+                    android:textSize="15sp" />
 
                 <TextView
-                    android:id="@+id/textView18"
+                    android:id="@+id/report_num1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="數字" />
+                    android:text="數字"
+                    android:textSize="15sp" />
             </LinearLayout>
 
             <TextView
                 android:id="@+id/textView12"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="投資現金流量" />
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:text="投資現金流量"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -61,25 +83,33 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/textView11"
-                    android:layout_width="5dp"
+                    android:id="@+id/report_text2"
+                    android:layout_width="35dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="科目" />
+                    android:layout_marginLeft="18dp"
+                    android:layout_weight="3"
+                    android:text="科目"
+                    android:textSize="15sp" />
 
                 <TextView
-                    android:id="@+id/textView18"
+                    android:id="@+id/report_num2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="數字" />
+                    android:text="數字"
+                    android:textSize="15sp" />
             </LinearLayout>
 
             <TextView
-                android:id="@+id/textView14"
+                android:id="@+id/textview12"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="融資現金流量" />
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:text="融資現金流量"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -87,21 +117,104 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/textView11"
-                    android:layout_width="11dp"
+                    android:id="@+id/report_text3"
+                    android:layout_width="35dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="科目" />
+                    android:layout_marginLeft="18dp"
+                    android:layout_weight="3"
+                    android:text="科目"
+                    android:textSize="15sp" />
 
                 <TextView
-                    android:id="@+id/textView18"
+                    android:id="@+id/report_num3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="數字" />
+                    android:text="數字"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/report_text4"
+                    android:layout_width="55dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="3"
+                    android:text="本期現金增減數"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/report_num4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:text="數字"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/report_text5"
+                    android:layout_width="55dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="3"
+                    android:text="加　期初現金餘額"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/report_num5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:text="數字"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/report_text6"
+                    android:layout_width="55dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="3"
+                    android:text="期末現金餘額"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/report_num6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:text="數字"
+                    android:textSize="15sp" />
+
             </LinearLayout>
 
         </LinearLayout>
+
     </LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+</android.support.v7.widget.LinearLayoutCompat>
