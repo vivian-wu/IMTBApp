@@ -66,7 +66,7 @@ public class QRScannerActivity extends AppCompatActivity
 		});
 		String PStatus=updateStatus();
 		if(PStatus=="drop"){
-			ShowMsgDialog_Drop("恭喜您！","跳出儲蓄圈啦～！\n世界變得更寬廣了，還不加緊腳步邁向大老闆之路！","　確定　");
+			ShowMsgDialog_Drop("恭喜您！","跳出儲蓄圈啦～！\n世界變得更寬廣了，還不加緊腳步邁向大老闆之路！","　爽啦！　");
 		}
 	}
 	private void ShowMsgDialog_Drop(String title ,String Msg,String btnText)
