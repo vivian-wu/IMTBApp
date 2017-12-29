@@ -249,16 +249,25 @@ public class assets_record extends AppCompatActivity
         /*抓出他的股票資料*/
 
         String temp="";
-
-        String query = "Select t1.StockName,t2.Price,t2.Quantity from CARD_INVESTMENT t1 INNER JOIN PLAYER_INVESTMENT t2 on t1.CardInvestNo=t2.CardNo Where t2.PlayerID='"+id+"'";
+        int total;
+        int quantity;
+        double price;
+        String query = "Select t2.StockName,Sum(t1.Price*t1.Quantity),Sum(t1.Quantity ) " +
+                "From PLAYER_INVESTMENT t1   " +
+                "INNER JOIN CARD_INVESTMENT t2 ON t1.CardNo=t2.CardInvestNo  " +
+                "WHERE PlayerID='"+id+"'  " +
+                "GROUP BY t2.StockName";
         Cursor cursorinfo = db.rawQuery(query, null);
 
 
         if (cursorinfo.getCount() != 0){
+            cursorinfo.moveToFirst();
             do {
-                cursorinfo.moveToFirst();
+                total=cursorinfo.getInt(1);
+                quantity=cursorinfo.getInt(2);
+                price=(double)total/(double)quantity;
                 temp = temp+cursorinfo.getString(0);    //名稱
-                temp = temp+"　 　　"+cursorinfo.getString(1);     //金額
+                temp = temp+"　 　　"+String.valueOf(price);     //金額
                 temp = temp+"　　　　"+cursorinfo.getString(2)+"\n";  //張數
                 Log.d("現金 - 股票資料:", temp);
 

@@ -139,7 +139,8 @@
             android:buttonTint="@color/zxing_contents_text"
             android:checked="true"
             android:text="買進"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:visibility="visible" />
 
         <RadioButton
             android:id="@+id/inv_rbt_sell"
@@ -149,7 +150,8 @@
             android:buttonTint="@color/zxing_contents_text"
             android:checked="false"
             android:text="賣出"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:visibility="visible" />
 
     </RadioGroup>
 
@@ -182,6 +184,7 @@
             android:paddingLeft="8dp"
             android:selectAllOnFocus="false"
             android:singleLine="false"
+            android:text="0"
             android:visibility="visible" />
     </LinearLayout>
 
