@@ -16,7 +16,24 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+
         android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@color/white_alpha"
+            android:gravity="center"
+            android:padding="2dp"
+            android:shadowColor="@color/zxing_viewfinder_mask"
+            android:shadowDx="3"
+            android:shadowDy="2"
+            android:shadowRadius="2"
+            android:text="收支紀錄"
+            android:textColor="@color/vampire_gray"
+            android:textSize="24sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
