@@ -106,7 +106,7 @@ public class JobScannerActivity extends AppCompatActivity {
                 sql = "INSERT INTO SALARYRECORD (PlayerID, Salary, Cost, MonthCashFlow) values("+ playerId + ", "+ playerSalary +", "+ playerCost+", "+playerMCF+")";
                 db.execSQL(sql);
 
-                sql = "INSERT INTO CASHFLOW (CardNo, CardInvestNo, CardMarNo, CardOrderNo, CardOtherNo, PlayerID, CashCategory, Amount) values('n', 'n', 'n', 'n' ,'F00', "+playerId+", '收入', 25000)";
+                sql = "INSERT INTO CASHFLOW (CardNo, CardInvestNo, CardMarNo, CardOrderNo, CardOtherNo, PlayerID, CashCategory, Amount) values('n', 'n', 'n', 'n' ,'F00', "+playerId+", '收入', "+playerMCF+")";
                 db.execSQL(sql);
 
                 Toast.makeText(JobScannerActivity.this, "新增資料成功！", Toast.LENGTH_SHORT).show();
