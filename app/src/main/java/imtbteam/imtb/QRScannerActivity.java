@@ -644,12 +644,13 @@ public class QRScannerActivity extends AppCompatActivity
 
 		/*抓出最後一筆玩家ID*/
 		String id = "";
-
-		Cursor cursorid = db.rawQuery("Select PlayerID from PLAYER ORDER BY PlayerID desc limit 1 ", null);
+		int Status;
+		Cursor cursorid = db.rawQuery("Select PlayerID, Status  from PLAYER ORDER BY PlayerID desc limit 1 ", null);
 		if (cursorid.getCount() != 0){
 			do {
 				cursorid.moveToLast();
 				id = cursorid.getString(0);
+				Status = cursorid.getInt(1);
 				Log.d("新增 playerID:", id);
 			} while (cursorid.moveToNext());
 		}
@@ -676,7 +677,7 @@ public class QRScannerActivity extends AppCompatActivity
 		}
 
 		cursorinfo.close();
-		if(idcash>130000){
+		if(idcash>130000 && Status==1){
  			String Statussql="UPDATE PLAYER SET Status=2 WHERE PlayerID = "+id+";";
  			db.execSQL(Statussql);
 			return "drop";
