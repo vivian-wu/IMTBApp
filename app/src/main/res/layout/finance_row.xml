@@ -33,8 +33,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="4"
-        android:gravity="top|center_vertical"
-        android:padding="3dp"
+        android:padding="5dp"
         android:paddingStart="6dp"
         android:text="TextView"
         android:textSize="12sp" />

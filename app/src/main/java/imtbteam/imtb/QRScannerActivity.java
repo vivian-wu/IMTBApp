@@ -249,7 +249,17 @@ public class QRScannerActivity extends AppCompatActivity
 		MyAlertDialog.setPositiveButton(btnText, new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialogInterface, int i) {
-				x=Set_Card(scanContent);
+			    if (scanContent.equals("F01")){
+                    x=Set_F01(scanContent);
+                }
+                else if (scanContent.equals("F02"))
+                {
+                    x=Set_F02(scanContent);
+                }
+                else {
+                    x=Set_Card(scanContent);
+                }
+
 			}
 		});
 
