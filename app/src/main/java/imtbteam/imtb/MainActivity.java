@@ -1,9 +1,12 @@
 package imtbteam.imtb;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,10 +16,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
 		implements NavigationView.OnNavigationItemSelectedListener {
+
+	private SQLiteDatabase db;
+	private MyDBHelper dbHelper;
+
+	private TextView name_Text;
+	private TextView job_Text;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +43,55 @@ public class MainActivity extends AppCompatActivity
 		assert drawer != null;
 		drawer.addDrawerListener(toggle);
 		toggle.syncState();
+
+		///////////////////////////// NAV 資訊 /////////////////////////////
+
+		dbHelper = new MyDBHelper(this);   // 打開資料庫
+		db = dbHelper.getWritableDatabase();
+
+		job_Text = (TextView) findViewById(R.id.job_Text);
+		name_Text = (TextView) findViewById(R.id.name_Text);
+
+		String id = "";
+		String name="" ;
+
+		Cursor cursor = db.rawQuery("Select PlayerID,PlayerName from PLAYER",null);
+
+		do {
+			cursor.moveToLast();
+			id = cursor.getString(0);
+			name = cursor.getString(1);
+			Log.d("playerID:", id +"name:"+name);
+		}while(cursor.moveToNext());
+
+		cursor.close();
+
+		name_Text.setText(name);
+
+		String job ="";
+
+		String query ="Select t2.Job " +
+				"from PLAYER t1 " +
+				"INNER JOIN JOB t2 ON t1.JobNo=t2.JobNo " +
+				"WHERE PlayerID='"+id+"'";
+
+		Cursor cursorjob = db.rawQuery(query, null);
+
+		do {
+			cursorjob.moveToLast();
+			job = cursorjob.getString(0);
+			Log.d("JobName",job );
+		}while(cursorjob.moveToNext());
+
+		cursorjob.close();
+
+		job_Text.setText(job);
+
+		///////////////////////////// NAV 資訊 /////////////////////////////
+
+
+
+
 
 		/////////////////////////////// 按鈕選單////////////////////////////
 
