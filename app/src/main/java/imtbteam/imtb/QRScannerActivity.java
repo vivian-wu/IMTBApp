@@ -91,7 +91,9 @@ public class QRScannerActivity extends AppCompatActivity
 		MyAlertDialog.show();
 	}
 	public void onActivityResult(int requestCode, int resultCode, Intent intent){
-
+		switch (requestCode) {
+			case IntentIntegrator.REQUEST_CODE:
+				if (resultCode == JobScannerActivity.RESULT_OK) {
 		IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
 
 		String content;
@@ -220,7 +222,8 @@ public class QRScannerActivity extends AppCompatActivity
 		else{
             Toast.makeText(QRScannerActivity.this,"nothing",Toast.LENGTH_SHORT).show();
 		}
-
+				}
+		}
 	}
     private void ShowMsgDialog_justshow(String title ,String Msg,String btnText)
     {
