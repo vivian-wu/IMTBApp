@@ -73,12 +73,12 @@ public class InvestmentActivity extends AppCompatActivity
                     Status="";
                     Status=BuyStock(cardno_string,Amount);
                     if(Status=="y"){
-                        ShowMsgDialog_Success("投資理財","購買成功!","　確定　");
+                        ShowMsgDialog_Success("投資理財","購買成功！","　好耶！　");
                         db.close();
                     }
 
                     else if(Status=="x"){
-                        ShowMsgDialog_Fail("投資理財","卡片金額不足購買股票","　確定　");
+                        ShowMsgDialog_Fail("投資理財","持有金額不足購買股票","　噢不！　");
                     }
                     else{
                         ShowMsgDialog_Fail("投資理財","輸入錯誤"+Status,"　確定　");
@@ -89,12 +89,12 @@ public class InvestmentActivity extends AppCompatActivity
                     Status="";
                     Status=SellStock(cardno_string,Amount);
                     if(Status=="y"){
-                        ShowMsgDialog_Success("投資理財","成功賣出!","　確定　");
+                        ShowMsgDialog_Success("投資理財","成功賣出！","　好耶！　");
                         db.close();
                     }
 
                     else if(Status=="x"){
-                        ShowMsgDialog_Fail("投資理財","持有股票數量不足，請重新輸入！","　確定　");
+                        ShowMsgDialog_Fail("投資理財","持有股票數量不足，請重新輸入！","　噢不～　");
                     }
                     else{
                         ShowMsgDialog_Fail("投資理財","輸入錯誤"+Status,"　確定　");
